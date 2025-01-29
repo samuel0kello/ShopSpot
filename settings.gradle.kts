@@ -1,4 +1,7 @@
 pluginManagement {
+    includeBuild("build-logic") {
+        name = "build-logic-included"
+    }
     repositories {
         google {
             content {
@@ -21,4 +24,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "ShopSpot"
 include(":app")
- 
+include(":feature:auth")
+include(":feature:cart")
+include(":feature:products")
+include(":feature:profile")
+include(":feature:wishlist")
+include(":build-logic:convention")

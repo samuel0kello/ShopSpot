@@ -1,5 +1,7 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.shopspot.android.application.compose)
+    alias(libs.plugins.shopspot.android.application)
+//    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
     id("com.google.devtools.ksp")
@@ -7,12 +9,10 @@ plugins {
 
 android {
     namespace = "com.samuelokello.shopspot"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.samuelokello.shopspot"
-        minSdk = 25
-        targetSdk = 35
+
         versionCode = 1
         versionName = "1.0"
 
@@ -31,19 +31,7 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"

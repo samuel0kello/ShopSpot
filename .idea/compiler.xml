@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="21" />
+    <bytecodeTargetLevel target="17">
+      <module name="ShopSpot.app" target="21" />
+      <module name="ShopSpot.feature.auth" target="21" />
+      <module name="ShopSpot.feature.cart" target="21" />
+      <module name="ShopSpot.feature.products" target="21" />
+      <module name="ShopSpot.feature.profile" target="21" />
+      <module name="ShopSpot.feature.wishlist" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

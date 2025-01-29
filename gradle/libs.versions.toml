@@ -1,4 +1,5 @@
 [versions]
+androidxComposeCompiler = "1.5.1"
 agp = "8.6.1"
 coilCompose = "2.6.0"
 converterGson = "2.9.0"
@@ -21,8 +22,12 @@ roomCompiler = "2.6.1"
 junitKtx = "1.2.1"
 composeMaterial = "1.4.0"
 datastoreCoreAndroid = "1.1.1"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp"}
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
 androidx-material-icons-extended-android = { module = "androidx.compose.material:material-icons-extended-android", version.ref = "materialIconsExtendedAndroid" }
@@ -53,10 +58,20 @@ retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit
 androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 androidx-compose-material = { group = "androidx.wear.compose", name = "compose-material", version.ref = "composeMaterial" }
 androidx-datastore-core-android = { group = "androidx.datastore", name = "datastore-core-android", version.ref = "datastoreCoreAndroid" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+
 
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+android-library = { id = "com.android.library", version.ref = "agp" }
+#plugind defined for this project
+shopspot-android-application = { id = "com.samuelokello.convention.application", version = "unspecified" }
+shopspot-android-application-compose = { id = "com.samuelokello.convention.application.compose", version = "unspecified" }
+shopspot-android-library = { id = "com.samuelokello.convention.library", version = "unspecified" }
+shopspot-android-library-compose = { id = "com.samuelokello.convention.library.compose", version = "unspecified" }
+shopspot-jvm-library = { id = "com.samuelokello.convention.jvm.library", version = "unspecified" }
