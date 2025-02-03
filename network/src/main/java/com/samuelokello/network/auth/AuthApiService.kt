@@ -1,8 +1,8 @@
-package com.samuelokello.shopspot.data.network.auth
+package com.samuelokello.network.auth
 
 import com.samuelokello.shopspot.data.network.auth.dto.UserResponseDto
 import com.samuelokello.shopspot.data.network.auth.request.LoginRequest
-import com.samuelokello.shopspot.data.network.auth.response.LoginResponse
+import com.samuelokello.network.auth.response.LoginResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
