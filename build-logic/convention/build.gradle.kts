@@ -22,28 +22,49 @@ dependencies {
 gradlePlugin {
     plugins {
         create("androidApplicationCompose") {
-            id = "com.samuelokello.convention.application.compose"
+            id = "com.android.convention.application.compose"
             implementationClass = "com.samuelokello.convention.AndroidApplicationComposeConventionPlugin"
         }
 
         create("androidApplication") {
-            id = "com.samuelokello.convention.application"
+            id = "com.android.convention.application"
             implementationClass = "com.samuelokello.convention.AndroidApplicationConventionPlugin"
         }
 
         create("androidLibrary") {
-            id = "com.samuelokello.convention.library"
+            id = "com.android.convention.library"
             implementationClass = "com.samuelokello.convention.AndroidLibraryConventionPlugin"
         }
 
         create("androidLibraryCompose") {
-            id = "com.samuelokello.convention.library.compose"
+            id = "com.android.convention.library.compose"
             implementationClass = "com.samuelokello.convention.AndroidLibraryComposeConventionPlugin"
         }
 
-        create("jvmLibrary") {
-            id = "com.samuelokello.convention.jvm.library"
-            implementationClass = "com.samujelokello.convention.JvmLibraryConventionPlugin"
+        create("kotlinLibrary") {
+            id = "com.samuelokello.convention.kotlin"
+            implementationClass = "com.samuelokello.convention.KotlinConventionPlugin"
         }
+
+        create("hilt") {
+            id = "com.samuelokello.convention.hilt"
+            implementationClass = "com.samuelokello.convention.AndroidHiltConventionPlugin"
+        }
+
+        create("ksp") {
+            id = "com.samuelokello.convention.ksp"
+            implementationClass = "com.samuelokello.convention.KspConventionPlugin"
+        }
+
+        create("kotlinxSerializationJson") {
+            id = "com.samuelokello.convention.kotlinxSerializationJson"
+            implementationClass = "com.samuelokello.convention.KotlinxSerializationJsonPlugin"
+        }
+
+        create("room") {
+            id = "com.samuelokello.convention.room"
+            implementationClass = "com.samuelokello.convention.RoomConventionPlugin"
+        }
+
     }
 }
