@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.data.local.product
+package com.samuelokello.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

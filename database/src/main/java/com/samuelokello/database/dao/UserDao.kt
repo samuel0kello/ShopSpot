@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.data.local
+package com.samuelokello.database.dao
 
 import androidx.room.Dao
 

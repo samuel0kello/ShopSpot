@@ -1,7 +1,9 @@
-package com.samuelokello.shopspot.data.local.cart// UserCartEntity.kt
+package com.samuelokello.database.entity
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.samuelokello.database.converters.CartProductConverter
 
 @Entity(tableName = "user_carts")
 data class UserCartEntity(

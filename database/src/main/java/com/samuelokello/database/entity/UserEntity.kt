@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.data.local
+package com.samuelokello.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
