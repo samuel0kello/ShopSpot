@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.domain
+package com.samuelokello.core.model
 
 data class Product(
     val id: Int,
@@ -9,5 +9,4 @@ data class Product(
     val image: String,
     val rating: Double,
     val count: Int,
-    val isFavourite: Boolean? = false
 )
