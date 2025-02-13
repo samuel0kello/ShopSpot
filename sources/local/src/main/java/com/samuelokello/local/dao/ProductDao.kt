@@ -1,10 +1,10 @@
-package com.samuelokello.database.dao
+package com.samuelokello.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.samuelokello.database.entity.ProductEntity
+import com.samuelokello.local.entity.ProductEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -13,12 +13,13 @@ interface ProductDao {
     suspend fun insertProducts(products: List<ProductEntity>)
 
     @Query("SELECT * FROM products")
-    fun  getProducts(): Flow<List<ProductEntity>>
+    fun getProducts(): Flow<List<ProductEntity>>
 
-    @Query("SELECT * FROM products WHERE :id == id" )
+    @Query("SELECT * FROM products WHERE :id == id")
     fun getProductById(id: Int): ProductEntity
 
-    @Query("""
+    @Query(
+        """
         SELECT * FROM products
         WHERE (:query IS NULL OR title LIKE '%' || :query || '%')
         AND (:minPrice IS NULL OR price >= :minPrice)
@@ -26,14 +27,14 @@ interface ProductDao {
         AND (:category IS NULL OR category = :category)
         AND (:minRate IS NULL OR rate >= :minRate)
         AND (:minCount IS NULL OR rating_count >= :minCount)
-    """)
-        fun searchProductsWithFilters(
-            query: String?,
-            minPrice: Double?,
-            maxPrice: Double?,
-            category: String?,
-            minRate: Double?,
-            minCount: Int?
-        ): Flow<List<ProductEntity>>
-
+    """,
+    )
+    fun searchProductsWithFilters(
+        query: String?,
+        minPrice: Double?,
+        maxPrice: Double?,
+        category: String?,
+        minRate: Double?,
+        minCount: Int?,
+    ): Flow<List<ProductEntity>>
 }

@@ -1,11 +1,11 @@
-package com.samuelokello.database.entity
+package com.samuelokello.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "products", indices = [Index(value= ["title","category"])])
+@Entity(tableName = "products", indices = [Index(value = ["title", "category"])])
 data class ProductEntity(
     @PrimaryKey val id: Int,
     val title: String,
@@ -14,6 +14,5 @@ data class ProductEntity(
     val category: String,
     @ColumnInfo(name = "image_url")val image: String,
     val rate: Double,
-    @ColumnInfo(name = "rating_count")val count: Int
+    @ColumnInfo(name = "rating_count")val count: Int,
 )
-

@@ -1,9 +1,9 @@
-package com.samuelokello.database.entity
+package com.samuelokello.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.samuelokello.database.converters.CartProductConverter
+import com.samuelokello.local.converters.CartProductConverter
 
 @Entity(tableName = "user_carts")
 data class UserCartEntity(
@@ -13,5 +13,5 @@ data class UserCartEntity(
     @TypeConverters(CartProductConverter::class)
     val products: List<CartProductEntity>,
     val userId: Int,
-    val v: Int? = null
+    val v: Int? = null,
 )

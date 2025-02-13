@@ -1,4 +1,4 @@
-package com.samuelokello.database.entity
+package com.samuelokello.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -6,5 +6,5 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey
-    val id: Int = 0
+    val id: Int = 0,
 )
