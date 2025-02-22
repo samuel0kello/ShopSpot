@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage", "UnstableApiUsage")
+
 pluginManagement {
     includeBuild("build-logic") {
         name = "build-logic-included"
@@ -30,3 +32,13 @@ include(":feature:products")
 include(":feature:profile")
 include(":feature:wishlist")
 include(":build-logic:convention")
+include(":core")
+include("sources:network")
+include(":common-ui")
+include("sources:local")
+include(":domain")
+include(":feature:search")
+include(":feature:home")
+include(":feature:order")
+include(":feature:bottom-navigation")
+include(":sources:repository")

@@ -12,14 +12,14 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("com.android.application")
-                apply("org.jetbrains.kotlin.android") // Ensure project build.gradle declared this plugin
+                apply("org.jetbrains.kotlin.android")
             }
 
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = AppConfig.targetSdk
+                defaultConfig.applicationId = "com.samuelokello.shopspot"
             }
         }
     }
-
 }

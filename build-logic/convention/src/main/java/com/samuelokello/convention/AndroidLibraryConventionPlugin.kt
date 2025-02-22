@@ -11,11 +11,12 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
-
     override fun apply(project: Project) {
-        val androidLibraryPublishMetaData = project.extensions.create(
-            "androidLibraryPublishMetaData", AndroidLibraryPublishMetaData::class.java
-        )
+        val androidLibraryPublishMetaData =
+            project.extensions.create(
+                "androidLibraryPublishMetaData",
+                AndroidLibraryPublishMetaData::class.java,
+            )
 
         with(project) {
             with(pluginManager) {
@@ -34,7 +35,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                /*Add common dependencies here (example testing library)*/
+                // Add common dependencies here (example testing library)
             }
         }
     }
@@ -44,10 +45,16 @@ internal fun Project.configureAndroidLibraryPublish(metaData: AndroidLibraryPubl
     if (!metaData.isPublishEnabled) return
 
     afterEvaluate {
-        val allVariants = (extensions.getByName("android") as LibraryExtension).libraryVariants.map { it.name }.toSet()
-        val eligiblePublication = metaData.publicationList.filter { allVariants.contains(it.variantName) }
+        val allVariants =
+            (extensions.getByName("android") as LibraryExtension)
+                .libraryVariants
+                .map { it.name }
+                .toSet()
+        val eligiblePublication =
+            metaData.publicationList.filter { allVariants.contains(it.variantName) }
 
-        val publishing = extensions.getByType(PublishingExtension::class.java) // from maven-publish plugin
+        val publishing =
+            extensions.getByType(PublishingExtension::class.java) // from maven-publish plugin
 
         eligiblePublication.forEach { publication ->
             publishing.publications.create(publication.variantName, MavenPublication::class.java) {
@@ -77,5 +84,5 @@ data class PublicationDetail(
     val artifactId: String,
     val version: String,
     val name: String? = null,
-    val description: String? = null
+    val description: String? = null,
 )

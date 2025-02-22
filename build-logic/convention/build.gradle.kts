@@ -66,5 +66,14 @@ gradlePlugin {
             implementationClass = "com.samuelokello.convention.RoomConventionPlugin"
         }
 
+        create("feature-convention") {
+            id = "com.samuelokello.convention.feature"
+            implementationClass = "com.samuelokello.convention.FeatureConventionPlugin"
+        }
+
+        create("sources-convention") {
+            id = "com.samuelokello.convention.sources"
+            implementationClass = "com.samuelokello.convention.SourcesConventionPlugin"
+        }
     }
 }
