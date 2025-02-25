@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.components
+package com.samuelokello.commonui.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
@@ -11,40 +11,49 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.samuelokello.shopspot.util.TopBarConfig
-import com.samuelokello.shopspot.util.TopBarType
+import com.samuelokello.shopspot.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShopSpotTopAppBar(config: TopBarConfig, onBackClick:() -> Unit) {
+fun ShopSpotTopAppBar(
+    config: TopBarConfig,
+    onBackClick: () -> Unit,
+) {
     when (config.topBarType) {
         TopBarType.CenterAligned -> {
             CenterAlignedTopAppBar(
                 title = { Text(config.title, style = appBarTextStyle) },
-                navigationIcon = {if (config.showBackIcon){
-                    IconButton(onClick = onBackClick) {
-                        Icon(Icons.Default.ArrowBackIosNew, contentDescription = "Back")
+                navigationIcon = {
+                    if (config.showBackIcon) {
+                        IconButton(onClick = onBackClick) {
+                            Icon(Icons.Default.ArrowBackIosNew, contentDescription =
+                                stringResource(
+                                    R.string.back,
+                                )
+                            )
+                        }
                     }
-                }
                 },
-                actions = { config.actions?.invoke(this) }
+                actions = { config.actions?.invoke(this) },
             )
         }
         TopBarType.Regular -> {
             TopAppBar(
                 title = { Text(config.title, style = appBarTextStyle) },
                 navigationIcon = {},
-                actions = { config.actions?.invoke(this) }
+                actions = { config.actions?.invoke(this) },
             )
         }
     }
 }
-val appBarTextStyle
-    @Composable get() = MaterialTheme.typography.titleLarge.copy(
-        color = Color.Black,
-        fontSize = 36.sp,
-        fontWeight = FontWeight.Bold
-    )
 
+val appBarTextStyle
+    @Composable get() =
+        MaterialTheme.typography.titleLarge.copy(
+            color = Color.Black,
+            fontSize = 36.sp,
+            fontWeight = FontWeight.Bold,
+        )
