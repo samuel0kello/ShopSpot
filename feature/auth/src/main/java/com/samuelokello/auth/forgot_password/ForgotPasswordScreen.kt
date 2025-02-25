@@ -1,11 +1,18 @@
-package com.samuelokello.shopspot.ui.auth.forgot_password
+package com.samuelokello.auth.forgot_password
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -15,23 +22,22 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.samuelokello.shopspot.R
+import com.samuelokello.feature.auth.R
 
 @Composable
-fun ForgotPasswordScreen(
-    modifier: Modifier = Modifier
-) {
+fun ForgotPasswordScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
     ForgotPasswordScreenContent(
         modifier = modifier,
         onClickForgotPassword = {
-            Toast.makeText(
-                context,
-                context.getString(R.string.no_password_request_link),
-                Toast.LENGTH_LONG
-            ).show()
-        }
+            Toast
+                .makeText(
+                    context,
+                    context.getString(R.string.no_password_request_link),
+                    Toast.LENGTH_LONG,
+                ).show()
+        },
     )
 }
 
@@ -42,14 +48,17 @@ private fun ForgotPasswordScreenContent(
 ) {
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = PaddingValues(16.dp),
     ) {
         item {
             Column(Modifier.padding(end = 16.dp)) {
                 Text(
-                    text = stringResource(R.string.please_enter_an_email_address_that_you_had_registered_with_so_that_we_can_send_you_a_password_reset_link),
+                    text =
+                        stringResource(
+                            R.string.please_enter_an_email_address,
+                        ),
                     fontSize = 12.sp,
-                    fontWeight = FontWeight.Light
+                    fontWeight = FontWeight.Light,
                 )
             }
         }
@@ -63,10 +72,11 @@ private fun ForgotPasswordScreenContent(
                 label = {
                     Text(text = "Email")
                 },
-                keyboardOptions = KeyboardOptions(
-                    autoCorrectEnabled = true,
-                    keyboardType = KeyboardType.Email
-                ),
+                keyboardOptions =
+                    KeyboardOptions(
+                        autoCorrectEnabled = true,
+                        keyboardType = KeyboardType.Email,
+                    ),
             )
         }
 
@@ -76,14 +86,15 @@ private fun ForgotPasswordScreenContent(
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = onClickForgotPassword,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(8.dp),
             ) {
                 Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
                     text = "Continue",
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
                 )
             }
         }
