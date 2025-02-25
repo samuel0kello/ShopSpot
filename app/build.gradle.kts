@@ -1,10 +1,8 @@
 plugins {
-    alias(libs.plugins.shopspot.android.application.compose)
-    alias(libs.plugins.shopspot.android.application)
-//    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
-    id("com.google.devtools.ksp")
+    id("com.android.convention.application")
+    id("com.android.convention.application.compose")
+    id("com.samuelokello.convention.hilt")
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -12,34 +10,24 @@ android {
 
     defaultConfig {
         applicationId = "com.samuelokello.shopspot"
-
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
-    }
-
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
+
+    implementation(project(":common-ui"))
+    implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":sources:network"))
+    implementation(project(":feature:auth"))
+    implementation(project(":feature:bottom-navigation"))
+    implementation(project(":feature:cart"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:order"))
+    implementation(project(":feature:products"))
+    implementation(project(":feature:profile"))
+    implementation(project(":feature:search"))
+    implementation(project(":feature:wishlist"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -51,7 +39,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.junit.ktx)
     implementation(libs.androidx.compose.material)
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -61,32 +49,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.compose)
 
-    //extended icons
-    implementation(libs.androidx.material.icons.extended.android)
-
-    // GSON
-    implementation(libs.converter.gson)
-
-    // Kotlin serialization
-    implementation(libs.kotlinx.serialization.json)
-
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-
-    // retrofit
-    implementation(libs.retrofit)
-    
-    /// Retrofit with Kotlin serialization Converter
-    implementation(libs.retrofit2.kotlinx.serialization.converter)
-    implementation(libs.okhttp)
-
-    // coil
-    implementation(libs.coil.compose)
-
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
-
-    //Room
-    implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
 }
