@@ -34,7 +34,7 @@ interface ProductDao {
         minPrice: Double?,
         maxPrice: Double?,
         category: String?,
-        minRate: Double?,
-        minCount: Int?,
+        minRate: Int?,
+        minCount: Double?,
     ): Flow<List<ProductEntity>>
 }

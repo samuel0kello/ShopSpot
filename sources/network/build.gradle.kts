@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.samuelokello.shopspot"
+    namespace = "com.samuelokello.network"
 }
 
 dependencies {
