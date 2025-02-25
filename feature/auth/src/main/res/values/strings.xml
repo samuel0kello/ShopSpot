@@ -1,0 +1,4 @@
+<resources>
+    <string name="please_enter_an_email_address">Please enter an email address that you had registered with, so that we can send you a password reset link</string>
+    <string name="no_password_request_link">This API does not provide an endpoint for sending password reset link, just login with the credentials provided in the README file</string>
+</resources>
