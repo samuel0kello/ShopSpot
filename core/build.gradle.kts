@@ -11,11 +11,10 @@ android {
 
 dependencies {
 
-    implementation (libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.androidx.datastore.preferences)
 
     // Kotlin serialization
     implementation(libs.kotlinx.serialization.json)
-
 }
