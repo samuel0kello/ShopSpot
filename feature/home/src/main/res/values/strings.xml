@@ -1,0 +1,4 @@
+<resources>
+    <string name="loading_failed">Loading failed</string>
+    <string name="loading">loading</string>
+</resources>

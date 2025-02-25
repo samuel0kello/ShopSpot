@@ -16,6 +16,7 @@ class FeatureConventionPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("com.samuelokello.convention.hilt")
                 apply("com.android.convention.library.compose")
+//                apply(libs.findLibrary("compose-compiler").get())
             }
 
             extensions.configure<LibraryExtension> {
@@ -34,11 +35,14 @@ class FeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 // Feature modules
                 "implementation" (project(":core"))
+                "implementation" (project(":domain"))
                 "implementation"(project(":common-ui"))
 
                 // AndroidX dependencies
                 "implementation"(libs.findLibrary("androidx-core-ktx").get())
                 "implementation"(libs.findLibrary("androidx-appcompat").get())
+                "implementation"(libs.findLibrary("androidx-lifecycle-runtime-ktx").get())
+                "implementation"(libs.findLibrary("androidx-activity-compose").get())
 
                 // Coroutines
                 "implementation"(libs.findLibrary("kotlinx-coroutines-core").get())
@@ -58,6 +62,12 @@ class FeatureConventionPlugin : Plugin<Project> {
 
                 // coil
                 "implementation"(libs.findLibrary("coil-compose").get())
+
+                // viewmodel
+                "implementation"(libs.findLibrary("androidx-lifecycle-viewmodel-compose").get())
+
+                // extended material icons
+                "implementation" (libs.findLibrary("androidx-material-icons-extended-android").get())
             }
         }
     }

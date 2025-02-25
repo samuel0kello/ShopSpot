@@ -3,11 +3,24 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="17">
       <module name="ShopSpot.app" target="21" />
+      <module name="ShopSpot.common-ui" target="21" />
+      <module name="ShopSpot.core" target="21" />
+      <module name="ShopSpot.dataStore" target="21" />
+      <module name="ShopSpot.domain" target="21" />
       <module name="ShopSpot.feature.auth" target="21" />
+      <module name="ShopSpot.feature.bottom-navigation" target="21" />
       <module name="ShopSpot.feature.cart" target="21" />
+      <module name="ShopSpot.feature.home" target="21" />
+      <module name="ShopSpot.feature.order" target="21" />
       <module name="ShopSpot.feature.products" target="21" />
       <module name="ShopSpot.feature.profile" target="21" />
+      <module name="ShopSpot.feature.search" target="21" />
       <module name="ShopSpot.feature.wishlist" target="21" />
+      <module name="ShopSpot.room" target="21" />
+      <module name="ShopSpot.sources.local" target="21" />
+      <module name="ShopSpot.sources.network" target="21" />
+      <module name="ShopSpot.sources.repository" target="21" />
+      <module name="StudioProjects.ShopSpot.app" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

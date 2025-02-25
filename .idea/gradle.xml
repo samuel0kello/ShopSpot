@@ -25,12 +25,23 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
+            <option value="$PROJECT_DIR$/common-ui" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/auth" />
+            <option value="$PROJECT_DIR$/feature/bottom-navigation" />
             <option value="$PROJECT_DIR$/feature/cart" />
+            <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/order" />
             <option value="$PROJECT_DIR$/feature/products" />
             <option value="$PROJECT_DIR$/feature/profile" />
+            <option value="$PROJECT_DIR$/feature/search" />
             <option value="$PROJECT_DIR$/feature/wishlist" />
+            <option value="$PROJECT_DIR$/sources" />
+            <option value="$PROJECT_DIR$/sources/local" />
+            <option value="$PROJECT_DIR$/sources/network" />
+            <option value="$PROJECT_DIR$/sources/repository" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
