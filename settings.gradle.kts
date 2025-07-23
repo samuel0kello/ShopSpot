@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("buildLogic")
     repositories {
         google {
             content {
@@ -21,4 +22,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "ShopSpot"
 include(":app")
- 
