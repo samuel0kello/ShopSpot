@@ -1,7 +1,6 @@
 [versions]
 activityCompose = "1.10.1"
 appcompat = "1.7.1"
-agp = "8.6.1"
 androidGradlePlugin = "8.11.1"
 androidTools = "31.11.1"
 coilCompose = "2.7.0"
@@ -73,12 +72,15 @@ room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", vers
 
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-android-library = { id = "com.android.library", version.ref = "agp" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 room = { id = "androidx.room", version.ref = "room"}
 
 # plugins defined for this project
-#shopspot-android-application = {id= "", version ="unspecified"}
+shopspot-android-application = {id= "shopspot.android.application", version ="unspecified"}
