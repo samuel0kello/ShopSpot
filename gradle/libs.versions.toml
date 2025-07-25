@@ -1,32 +1,32 @@
 [versions]
+activityCompose = "1.10.1"
+appcompat = "1.7.1"
 agp = "8.6.1"
 androidGradlePlugin = "8.11.1"
 androidTools = "31.11.1"
 coilCompose = "2.7.0"
+composeBom = "2025.07.00"
+composeMaterial = "1.4.1"
 converterGson = "3.0.0"
-kotlin = "2.2.0"
 coreKtx = "1.16.0"
+datastoreCoreAndroid = "1.1.7"
+espressoCore = "3.6.1"
+jetbrainsKotlinJvm = "2.2.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+junitKtx = "1.2.1"
+kotlin = "2.2.0"
 kotlinxCoroutinesTest = "1.10.2"
 kotlinxSerializationJson = "1.9.0"
+ksp = "2.1.21-2.0.2"
 lifecycleRuntimeKtx = "2.9.2"
-activityCompose = "1.10.1"
-composeBom = "2025.07.00"
+material = "1.12.0"
 materialIconsExtendedAndroid = "1.7.8"
 navigationCompose = "2.9.2"
 okhttp = "5.1.0"
 retrofit = "3.0.0"
 retrofit2KotlinxSerializationConverter = "1.0.0"
-roomCompiler = "2.7.2"
-junitKtx = "1.2.1"
-ksp = "2.1.21-2.0.2"
-composeMaterial = "1.4.1"
-datastoreCoreAndroid = "1.1.7"
-appcompat = "1.7.1"
-material = "1.12.0"
-jetbrainsKotlinJvm = "2.2.0"
+room = "2.7.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,9 +35,9 @@ androidx-material-icons-extended-android = { module = "androidx.compose.material
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompiler" }
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomCompiler" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -69,6 +69,8 @@ android-tools-common = { group = "com.android.tools", name = "common", version.r
 compose-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin"}
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp"}
+room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -76,6 +78,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
+room = { id = "androidx.room", version.ref = "room"}
 
 # plugins defined for this project
 #shopspot-android-application = {id= "", version ="unspecified"}
