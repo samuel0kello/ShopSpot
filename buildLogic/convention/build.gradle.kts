@@ -36,6 +36,33 @@ tasks {
 
 gradlePlugin {
     plugins {
-
+        register("androidApplicationCompose") {
+            id = "shopspot.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
+        register("androidApplication") {
+            id = "shopspot.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
+        register("androidLibraryCompose") {
+            id = "shopspot.android.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("androidLibrary") {
+            id = "shopspot.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("androidRoom") {
+            id = "shopspot.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
+        }
+        register("jvmLibrary") {
+            id = "shopspot.jvm.library"
+            implementationClass = "JvmLibraryConventionPlugin"
+        }
+        register("androidTest") {
+            id = "shopspot.android.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
     }
 }
