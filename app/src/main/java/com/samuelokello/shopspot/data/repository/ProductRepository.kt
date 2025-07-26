@@ -11,51 +11,50 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 
-interface ProductRepository{
+interface ProductRepository {
     fun getProducts(): Flow<List<Product>>
+
     fun searchProductsWithFilters(
         query: String,
         minPrice: Double?,
         maxPrice: Double?,
         category: String?,
         minCount: Int?,
-        minRating: Double?
-
+        minRating: Double?,
     ): Flow<List<Product>>
 
-    fun getProductById(id:Int):Product
+    fun getProductById(id: Int): Product
 }
+
 class ProductRepositoryImpl(
     private val productApiService: ProductApiService,
     private val productDao: ProductDao,
     private val productApiMapper: ProductApiMapper,
-    private val productEntityMapper: ProductEntityMapper
-): ProductRepository {
-    override fun getProducts(): Flow<List<Product>> {
-        return productDao.getProducts()
+    private val productEntityMapper: ProductEntityMapper,
+) : ProductRepository {
+    override fun getProducts(): Flow<List<Product>> =
+        productDao
+            .getProducts()
             .map { entities ->
                 entities.map { productEntityMapper.toDomain(it) }
-            }
-            .onStart {
+            }.onStart {
                 try {
-                    if (productDao.getProducts().firstOrNull()?.isEmpty() == true){
+                    if (productDao.getProducts().firstOrNull()?.isEmpty() == true) {
                         val apiProducts = productApiService.getProducts()
 
-                        val productEntities = apiProducts.map {
-                            productApiMapper.toDomain(it)
-                        }.map {
-                            productEntityMapper.toEntity(it)
-                        }
+                        val productEntities =
+                            apiProducts
+                                .map {
+                                    productApiMapper.toDomain(it)
+                                }.map {
+                                    productEntityMapper.toEntity(it)
+                                }
                         productDao.insertProducts(productEntities)
                     }
-                } catch (e:Exception) {
+                } catch (e: Exception) {
                     throw e
                 }
-
-
             }
-
-    }
 
     override fun searchProductsWithFilters(
         query: String,
@@ -63,15 +62,13 @@ class ProductRepositoryImpl(
         maxPrice: Double?,
         category: String?,
         minCount: Int?,
-        minRating: Double?
-    ): Flow<List<Product>> {
-        return productDao.searchProductsWithFilters(query = query, minPrice = minPrice,maxPrice = maxPrice, category = category, minCount =  minCount, minRate = minRating)
+        minRating: Double?,
+    ): Flow<List<Product>> =
+        productDao
+            .searchProductsWithFilters(query = query, minPrice = minPrice, maxPrice = maxPrice, category = category, minCount = minCount, minRate = minRating)
             .map { entities ->
-                entities.map {productEntityMapper.toDomain(it)}
+                entities.map { productEntityMapper.toDomain(it) }
             }
-    }
 
-    override fun getProductById(id: Int): Product {
-       return productDao.getProductById(id).toDomainModel()
-    }
+    override fun getProductById(id: Int): Product = productDao.getProductById(id).toDomainModel()
 }

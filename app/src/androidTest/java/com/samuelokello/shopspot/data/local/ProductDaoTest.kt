@@ -22,113 +22,123 @@ class ProductDaoTest {
     private lateinit var productDao: ProductDao
     private lateinit var shopSpotDatabase: ShopSpotDatabase
 
-    private var product1 = ProductEntity(1,"title1",3000.00,"some desc","category","img",4.0,344)
-    private var product2 = ProductEntity(2,"title2",4500.00,"some desc","category","img",3.7,34)
+    private var product1 = ProductEntity(1, "title1", 3000.00, "some desc", "category", "img", 4.0, 344)
+    private var product2 = ProductEntity(2, "title2", 4500.00, "some desc", "category", "img", 3.7, 34)
 
     @Before
     fun createDB() {
         val context: Context = ApplicationProvider.getApplicationContext()
-        shopSpotDatabase = Room.inMemoryDatabaseBuilder(context, ShopSpotDatabase::class.java)
-            .allowMainThreadQueries()
-            .build()
+        shopSpotDatabase =
+            Room
+                .inMemoryDatabaseBuilder(context, ShopSpotDatabase::class.java)
+                .allowMainThreadQueries()
+                .build()
         productDao = shopSpotDatabase.productDao()
     }
 
     @After
     @Throws(IOException::class)
-    fun closeDB(){
+    fun closeDB() {
         shopSpotDatabase.close()
     }
 
     @Test
     @Throws(IOException::class)
-    fun productDaoInsert_insertProductsToDB() = runBlocking{
-        addItemsToDB()
+    fun productDaoInsert_insertProductsToDB() =
+        runBlocking {
+            addItemsToDB()
 
-        val allProducts = productDao.getProducts().first()
+            val allProducts = productDao.getProducts().first()
 
-        assertEquals(allProducts[0],product1)
-
-    }
-
-    @Test
-    @Throws(IOException::class)
-    fun productDaoGetProducts_returnsAllProductsFromDB() = runBlocking{
-        addItemsToDB()
-        val allProducts = productDao.getProducts().first()
-
-        assertEquals(allProducts[0],product1)
-        assertEquals(allProducts[1],product2)
-    }
-
-    @Test
-    fun productDaoGetProducts_returnsEmptyListWhenNoProductsInserted() = runBlocking {
-        val allProducts = productDao.getProducts().first()
-        assertTrue(allProducts.isEmpty())
-    }
+            assertEquals(allProducts[0], product1)
+        }
 
     @Test
     @Throws(IOException::class)
-    fun productDaoSearchProduct_returnListOfProductsMatchingQuery() = runBlocking {
-        // Insert test products into the database
-        addItemsToDB()
+    fun productDaoGetProducts_returnsAllProductsFromDB() =
+        runBlocking {
+            addItemsToDB()
+            val allProducts = productDao.getProducts().first()
 
-        // Perform search query with a matching title
-        val searchResults1 = productDao.searchProductsWithFilters(
-            query = "title1",
-            minPrice = null,
-            maxPrice = null,
-            category = null,
-            minRate = null,
-            minCount = null
-        ).first()
+            assertEquals(allProducts[0], product1)
+            assertEquals(allProducts[1], product2)
+        }
 
-        // Assert that the returned results match the expected product
-        assertEquals(1, searchResults1.size)
-        assertEquals(product1, searchResults1[0])
-
-        // Perform search query with a non-matching title
-        val searchResults2 = productDao.searchProductsWithFilters(
-            query = "nonexistent",
-            minPrice = null,
-            maxPrice = null,
-            category = null,
-            minRate = null,
-            minCount = null
-        ).first()
-
-        // Assert that no results are returned
-        assertTrue(searchResults2.isEmpty())
-
-        // Perform search query with a partial match
-        val searchResults3 = productDao.searchProductsWithFilters(
-            query = "title",
-            minPrice = null,
-            maxPrice = null,
-            category = null,
-            minRate = null,
-            minCount = null
-        ).first()
-
-        // Assert that all matching results are returned
-        assertEquals(2, searchResults3.size)
-        assertTrue(searchResults3.contains(product1))
-        assertTrue(searchResults3.contains(product2))
-    }
+    @Test
+    fun productDaoGetProducts_returnsEmptyListWhenNoProductsInserted() =
+        runBlocking {
+            val allProducts = productDao.getProducts().first()
+            assertTrue(allProducts.isEmpty())
+        }
 
     @Test
     @Throws(IOException::class)
-    fun productDaoGetProductById_returnSingleProductMatchingId() = runBlocking {
-        addItemsToDB()
+    fun productDaoSearchProduct_returnListOfProductsMatchingQuery() =
+        runBlocking {
+            // Insert test products into the database
+            addItemsToDB()
 
-        val product = productDao.getProductById(1)
+            // Perform search query with a matching title
+            val searchResults1 =
+                productDao
+                    .searchProductsWithFilters(
+                        query = "title1",
+                        minPrice = null,
+                        maxPrice = null,
+                        category = null,
+                        minRate = null,
+                        minCount = null,
+                    ).first()
 
-        assertEquals(product,product1)
-    }
+            // Assert that the returned results match the expected product
+            assertEquals(1, searchResults1.size)
+            assertEquals(product1, searchResults1[0])
 
+            // Perform search query with a non-matching title
+            val searchResults2 =
+                productDao
+                    .searchProductsWithFilters(
+                        query = "nonexistent",
+                        minPrice = null,
+                        maxPrice = null,
+                        category = null,
+                        minRate = null,
+                        minCount = null,
+                    ).first()
 
+            // Assert that no results are returned
+            assertTrue(searchResults2.isEmpty())
+
+            // Perform search query with a partial match
+            val searchResults3 =
+                productDao
+                    .searchProductsWithFilters(
+                        query = "title",
+                        minPrice = null,
+                        maxPrice = null,
+                        category = null,
+                        minRate = null,
+                        minCount = null,
+                    ).first()
+
+            // Assert that all matching results are returned
+            assertEquals(2, searchResults3.size)
+            assertTrue(searchResults3.contains(product1))
+            assertTrue(searchResults3.contains(product2))
+        }
+
+    @Test
+    @Throws(IOException::class)
+    fun productDaoGetProductById_returnSingleProductMatchingId() =
+        runBlocking {
+            addItemsToDB()
+
+            val product = productDao.getProductById(1)
+
+            assertEquals(product, product1)
+        }
 
     private suspend fun addItemsToDB() {
-        productDao.insertProducts(listOf( product1,product2))
+        productDao.insertProducts(listOf(product1, product2))
     }
 }

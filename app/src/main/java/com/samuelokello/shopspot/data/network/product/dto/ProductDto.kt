@@ -10,11 +10,11 @@ data class ProductDto(
     val description: String,
     val category: String,
     val image: String,
-    val rating: RatingDto?
+    val rating: RatingDto?,
 )
 
 @Serializable
 data class RatingDto(
     val rate: Double,
-    val count: Int
+    val count: Int,
 )

@@ -45,16 +45,16 @@ import com.samuelokello.shopspot.ui.search.SearchScreen
 
 @Composable
 fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
-
     val viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
     val navController = rememberNavController()
     val currentBackStack by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStack?.destination?.route
 
-    val topBarConfig = topBarManager(
-        currentRoute.toString(),
-        navigateToCart = { navController.navigate(Screens.Cart.route) },
-    )
+    val topBarConfig =
+        topBarManager(
+            currentRoute.toString(),
+            navigateToCart = { navController.navigate(Screens.Cart.route) },
+        )
 
     var bottomBarVisible by remember { mutableStateOf(true) }
     val bottomBarHeight = 80.dp
@@ -63,17 +63,23 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
     val activity = LocalContext.current as ComponentActivity
     val context = LocalContext.current
 
-
-    val nestedScrollConnection = remember {
-        object : NestedScrollConnection {
-            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                // Hide bottom bar on scroll down, show on scroll up
-                if (available.y < -10) bottomBarVisible = false
-                else if (available.y > 10) bottomBarVisible = true
-                return Offset.Zero
+    val nestedScrollConnection =
+        remember {
+            object : NestedScrollConnection {
+                override fun onPreScroll(
+                    available: Offset,
+                    source: NestedScrollSource,
+                ): Offset {
+                    // Hide bottom bar on scroll down, show on scroll up
+                    if (available.y < -10) {
+                        bottomBarVisible = false
+                    } else if (available.y > 10) {
+                        bottomBarVisible = true
+                    }
+                    return Offset.Zero
+                }
             }
         }
-    }
 
     var selectedNavIndex by rememberSaveable {
         mutableIntStateOf(
@@ -83,7 +89,7 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
                 Screens.Favourite.route -> 2
                 Screens.Profile.route -> 3
                 else -> 0
-            }
+            },
         )
     }
 
@@ -92,15 +98,16 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
         topBar = {
             ShopSpotTopAppBar(
                 config = topBarConfig,
-                onBackClick = { navController.popBackStack() }
+                onBackClick = { navController.popBackStack() },
             )
         },
         bottomBar = {
-            if (currentRoute in setOf(
+            if (currentRoute in
+                setOf(
                     Screens.Home.route,
                     Screens.Profile.route,
                     Screens.Favourite.route,
-                    Screens.Search.route
+                    Screens.Search.route,
                 )
             ) {
                 SwipeAbleBottomNav(
@@ -115,32 +122,32 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
                             restoreState = true
                         }
                     },
-                    isVisible = bottomBarVisible
+                    isVisible = bottomBarVisible,
                 )
             }
-        }
+        },
     ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = Screens.AuthDashBoard.route,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding),
         ) {
             composable(Screens.AuthDashBoard.route) {
                 AuthDashboardScreen(
                     navigateToLogin = { navController.navigate(Screens.Login.route) },
-                    navigateToRegister = { navController.navigate(Screens.Register.route) }
+                    navigateToRegister = { navController.navigate(Screens.Register.route) },
                 )
             }
             composable(Screens.Register.route) {
                 RegisterScreen(
-                    navigateToLogin = { navController.navigate(Screens.Login.route) }
+                    navigateToLogin = { navController.navigate(Screens.Login.route) },
                 )
             }
             composable(Screens.Login.route) {
                 LoginScreen(
                     navigateToRegister = { navController.navigate(Screens.Register.route) },
-                    navigateToHome = { navController.navigate(Screens.Home.route)},
-                    navigateToForgotPassword =  { navController.navigate(Screens.ForgotPassword.route) },
+                    navigateToHome = { navController.navigate(Screens.Home.route) },
+                    navigateToForgotPassword = { navController.navigate(Screens.ForgotPassword.route) },
                 )
             }
             composable(Screens.ForgotPassword.route) {
@@ -152,14 +159,14 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
                         navController.navigate("${Screens.ProductDetailsScreen.route}/$productId")
                     },
                     onBackPressed = {
-                        navigationViewModel.onBackPressed(context = context, activity = activity )
-                    }
+                        navigationViewModel.onBackPressed(context = context, activity = activity)
+                    },
                 )
             }
             composable(Screens.Cart.route) {
                 CartScreen(
                     navigateToCheckout = { navController.navigate(Screens.OrderPlaced.route) },
-                    navigateToHome = { navController.navigate(Screens.Home.route) }
+                    navigateToHome = { navController.navigate(Screens.Home.route) },
                 )
             }
             composable(Screens.Search.route) {
@@ -167,7 +174,7 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
                     modifier = Modifier,
                     navigateToItemDetails = { product ->
                         navController.navigate("${Screens.ProductDetailsScreen.route}/${product.id}")
-                    }
+                    },
                 )
             }
             composable(Screens.Favourite.route) {
@@ -181,7 +188,7 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
             }
             composable(
                 route = "${Screens.ProductDetailsScreen.route}/{productId}",
-                arguments = listOf(navArgument("productId") { type = NavType.IntType })
+                arguments = listOf(navArgument("productId") { type = NavType.IntType }),
             ) { backStackEntry ->
                 val productId = backStackEntry.arguments?.getInt("productId")
                 if (productId != null) {

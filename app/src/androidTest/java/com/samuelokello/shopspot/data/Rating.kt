@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.fake
+package com.samuelokello.shopspot.data
 
 import com.samuelokello.shopspot.data.network.product.dto.ProductDto
 import com.samuelokello.shopspot.data.network.product.dto.RatingDto

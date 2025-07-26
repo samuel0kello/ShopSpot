@@ -9,13 +9,14 @@ import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 import java.io.IOException
 
-class LoginRepositoryImpl (
+class LoginRepositoryImpl(
     private val authApiService: AuthApiService,
-    private val authPreferences: AuthPreferences
+    private val authPreferences: AuthPreferences,
 ) : LoginRepository {
-
-    override suspend fun login(loginRequest: LoginRequest, rememberMe: Boolean) {
-
+    override suspend fun login(
+        loginRequest: LoginRequest,
+        rememberMe: Boolean,
+    ) {
         try {
             val response = authApiService.loginUser(loginRequest)
 
@@ -59,12 +60,11 @@ class LoginRepositoryImpl (
         }
     }
 
-    private suspend fun getAllUsers(email: String): UserResponseDto? {
-        return try {
+    private suspend fun getAllUsers(email: String): UserResponseDto? =
+        try {
             val users = authApiService.getAllUsers()
             users.find { it.email == email }
         } catch (e: Exception) {
             null
         }
-    }
 }

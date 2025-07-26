@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.data.local.cart// UserCartEntity.kt
+package com.samuelokello.shopspot.data.local.cart // UserCartEntity.kt
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -11,5 +11,5 @@ data class UserCartEntity(
     @TypeConverters(CartProductConverter::class)
     val products: List<CartProductEntity>,
     val userId: Int,
-    val v: Int? = null
+    val v: Int? = null,
 )

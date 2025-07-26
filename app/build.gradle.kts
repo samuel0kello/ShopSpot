@@ -73,7 +73,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.compose)
 
-    //extended icons
+    // extended icons
     implementation(libs.androidx.material.icons.extended.android)
 
     // GSON
@@ -86,8 +86,8 @@ dependencies {
 
     // retrofit
     implementation(libs.retrofit)
-    
-    /// Retrofit with Kotlin serialization Converter
+
+    // / Retrofit with Kotlin serialization Converter
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.okhttp)
 
@@ -97,7 +97,7 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
 
-    //Room
+    // Room
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)

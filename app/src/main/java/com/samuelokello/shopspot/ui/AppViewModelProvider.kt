@@ -12,40 +12,40 @@ import com.samuelokello.shopspot.ui.productdetails.ProductDetailViewModel
 import com.samuelokello.shopspot.ui.search.SearchViewModel
 
 object AppViewModelProvider {
-    val Factory = viewModelFactory {
-        initializer {
-            LoginViewModel(
-                repository = shopSpotApplication().container.loginRepository
-            )
+    val Factory =
+        viewModelFactory {
+            initializer {
+                LoginViewModel(
+                    repository = shopSpotApplication().container.loginRepository,
+                )
+            }
+            initializer {
+                HomeViewModel(
+                    repository = shopSpotApplication().container.productRepository,
+                )
+            }
+            initializer {
+                SearchViewModel(
+                    repository = shopSpotApplication().container.productRepository,
+                )
+            }
+            initializer {
+                ProductDetailViewModel(
+                    repository = shopSpotApplication().container.productRepository,
+                    cartRepository = shopSpotApplication().container.cartRepository,
+                )
+            }
+            initializer {
+                CartViewModel(
+                    cartRepository = shopSpotApplication().container.cartRepository,
+                    productRepository = shopSpotApplication().container.productRepository,
+                )
+            }
         }
-        initializer {
-            HomeViewModel(
-                repository = shopSpotApplication().container.productRepository
-            )
-        }
-        initializer {
-            SearchViewModel(
-                repository = shopSpotApplication().container.productRepository
-            )
-        }
-        initializer {
-            ProductDetailViewModel(
-                repository = shopSpotApplication().container.productRepository,
-                cartRepository = shopSpotApplication().container.cartRepository
-            )
-        }
-        initializer {
-            CartViewModel(
-                cartRepository = shopSpotApplication().container.cartRepository,
-                productRepository = shopSpotApplication().container.productRepository
-            )
-        }
-    }
 }
 
 /**
  * Extension function to queries for Application object and returns an instance of
  *  [ShopSpotApplication].
  */
-fun CreationExtras.shopSpotApplication(): ShopSpotApplication =
-    (this[AndroidViewModelFactory.APPLICATION_KEY] as ShopSpotApplication)
+fun CreationExtras.shopSpotApplication(): ShopSpotApplication = (this[AndroidViewModelFactory.APPLICATION_KEY] as ShopSpotApplication)

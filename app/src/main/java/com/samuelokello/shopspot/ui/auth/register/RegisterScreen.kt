@@ -27,46 +27,43 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RegisterScreen(
-    navigateToLogin: () -> Unit
-) {
+fun RegisterScreen(navigateToLogin: () -> Unit) {
     RegisterScreenContent(
         onClickSignUp = {
             navigateToLogin()
-        }
+        },
     )
 }
 
 @Composable
-private fun RegisterScreenContent(
-    onClickSignUp: () -> Unit,
-) {
+private fun RegisterScreenContent(onClickSignUp: () -> Unit) {
     LazyColumn(
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = PaddingValues(16.dp),
     ) {
-        item  {
-            Text(text="Getting Started",
-                style = MaterialTheme.typography.headlineMedium)
+        item {
+            Text(
+                text = "Getting Started",
+                style = MaterialTheme.typography.headlineMedium,
+            )
             Text(text = "Create an account to continue with your shopping")
             Spacer(modifier = Modifier.height(32.dp))
         }
 
         item {
-
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = "",
                 onValueChange = {
-
                 },
                 label = {
                     Text(text = "Name")
                 },
-                keyboardOptions = KeyboardOptions(
-                    capitalization = KeyboardCapitalization.Words,
-                    autoCorrectEnabled = true,
-                    keyboardType = KeyboardType.Email
-                ),
+                keyboardOptions =
+                    KeyboardOptions(
+                        capitalization = KeyboardCapitalization.Words,
+                        autoCorrectEnabled = true,
+                        keyboardType = KeyboardType.Email,
+                    ),
                 maxLines = 1,
                 singleLine = true,
             )
@@ -78,15 +75,15 @@ private fun RegisterScreenContent(
                 modifier = Modifier.fillMaxWidth(),
                 value = "",
                 onValueChange = {
-
                 },
                 label = {
                     Text(text = "Email")
                 },
-                keyboardOptions = KeyboardOptions(
-                    autoCorrectEnabled = true,
-                    keyboardType = KeyboardType.Email
-                ),
+                keyboardOptions =
+                    KeyboardOptions(
+                        autoCorrectEnabled = true,
+                        keyboardType = KeyboardType.Email,
+                    ),
                 maxLines = 1,
                 singleLine = true,
             )
@@ -98,15 +95,15 @@ private fun RegisterScreenContent(
                 modifier = Modifier.fillMaxWidth(),
                 value = "",
                 onValueChange = {
-
                 },
                 label = {
                     Text(text = "Password")
                 },
-                keyboardOptions = KeyboardOptions(
-                    autoCorrectEnabled = true,
-                    keyboardType = KeyboardType.Password
-                ),
+                keyboardOptions =
+                    KeyboardOptions(
+                        autoCorrectEnabled = true,
+                        keyboardType = KeyboardType.Password,
+                    ),
                 maxLines = 1,
                 singleLine = true,
             )
@@ -118,19 +115,22 @@ private fun RegisterScreenContent(
 
             Button(
                 onClick = {
-
-                    Toast.makeText(
-                        context,
-                        "This API does not provide an endpoint for registering, just login with the credentials provided in the README file",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast
+                        .makeText(
+                            context,
+                            "This API does not provide an endpoint for registering, just login with the credentials provided in the README file",
+                            Toast.LENGTH_LONG,
+                        ).show()
                 },
-                shape = RoundedCornerShape(8)
+                shape = RoundedCornerShape(8),
             ) {
                 Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp), text = "Sign Up", textAlign = TextAlign.Center
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
+                    text = "Sign Up",
+                    textAlign = TextAlign.Center,
                 )
             }
         }
@@ -139,23 +139,25 @@ private fun RegisterScreenContent(
 
             TextButton(
                 onClick = onClickSignUp,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 Text(
-                    text = buildAnnotatedString {
-                        append("Already have an account?")
-                        append(" ")
-                        withStyle(
-                            style = SpanStyle(
-                                color = MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
-                            )
-                        ) {
-                            append("Sign In")
-                        }
-                    },
-//                    fontFamily = poppins,
-                    textAlign = TextAlign.Center
+                    text =
+                        buildAnnotatedString {
+                            append("Already have an account?")
+                            append(" ")
+                            withStyle(
+                                style =
+                                    SpanStyle(
+                                        color = MaterialTheme.colorScheme.primary,
+                                        fontWeight = FontWeight.Bold,
+                                    ),
+                            ) {
+                                append("Sign In")
+                            }
+                        },
+                    //                    fontFamily = poppins,
+                    textAlign = TextAlign.Center,
                 )
             }
         }

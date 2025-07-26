@@ -42,15 +42,13 @@ import com.samuelokello.shopspot.ui.AppViewModelProvider
 @Composable
 fun ProductDetailsScreen(
     viewModel: ProductDetailViewModel = viewModel(factory = AppViewModelProvider.Factory),
-    productId: Int
+    productId: Int,
 ) {
-
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.getProductById(productId)
     }
-
 
     when (state) {
         is ProductDetailUiState.Loading -> {
@@ -59,8 +57,9 @@ fun ProductDetailsScreen(
 
         is ProductDetailUiState.Success -> {
             ProductDetail(
-                modifier = Modifier, state = state,
-                addToCart = viewModel::addToCart
+                modifier = Modifier,
+                state = state,
+                addToCart = viewModel::addToCart,
             )
         }
 
@@ -72,31 +71,33 @@ fun ProductDetailsScreen(
 
 @Composable
 fun ProductDetail(
-    modifier: Modifier = Modifier, state: ProductDetailUiState,
-    addToCart: (product: Product) -> Unit
+    modifier: Modifier = Modifier,
+    state: ProductDetailUiState,
+    addToCart: (product: Product) -> Unit,
 ) {
     val productDetails = (state as ProductDetailUiState.Success).product
     Column(
         modifier
             .fillMaxSize()
-            .padding(horizontal = 8.dp)
+            .padding(horizontal = 8.dp),
     ) {
         AsyncImage(
             model = productDetails.image,
             contentDescription = null,
-            modifier = modifier.padding(horizontal = 20.dp)
+            modifier = modifier.padding(horizontal = 20.dp),
         )
         Spacer(modifier = modifier.height(8.dp))
 
         Column(
-            modifier = modifier
-                .padding(4.dp)
-                .weight(1f),
+            modifier =
+                modifier
+                    .padding(4.dp)
+                    .weight(1f),
         ) {
             Row {
                 Text(
                     text = productDetails.title,
-                    style = MaterialTheme.typography.headlineMedium
+                    style = MaterialTheme.typography.headlineMedium,
                 )
             }
 
@@ -104,26 +105,26 @@ fun ProductDetail(
 
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     Icons.Default.StarRate,
                     contentDescription = "",
                     modifier = Modifier,
-                    tint = Color.Red
+                    tint = Color.Red,
                 )
                 Text(text = productDetails.rating.toString())
             }
             Spacer(Modifier.height(4.dp))
             Text(
                 text = productDetails.count.toString(),
-                style = MaterialTheme.typography.labelSmall.copy(color = Color.Gray)
+                style = MaterialTheme.typography.labelSmall.copy(color = Color.Gray),
             )
 
             Spacer(modifier = Modifier.height(8.dp))
             DescriptionWithReadMore(
                 description = productDetails.description,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
         }
 
@@ -132,20 +133,21 @@ fun ProductDetail(
                 Modifier
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(32.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     text = "$ ${productDetails.price}",
                     style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.primary
+                    color = MaterialTheme.colorScheme.primary,
                 )
                 Spacer(modifier = Modifier.weight(.5f))
                 Button(
                     onClick = { addToCart(productDetails) },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(60.dp),
-                    shape = RoundedCornerShape(20.dp)
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .height(60.dp),
+                    shape = RoundedCornerShape(20.dp),
                 ) {
                     Text("Add to Cart")
                 }
@@ -155,36 +157,36 @@ fun ProductDetail(
     }
 }
 
-
 @Composable
 fun DescriptionWithReadMore(
     description: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     var isExpanded by remember { mutableStateOf(false) }
     val scrollState = rememberScrollState()
 
     Column(
-        modifier = modifier
-            .verticalScroll(scrollState)
+        modifier =
+            modifier
+                .verticalScroll(scrollState),
     ) {
         Text(
             text = description,
             maxLines = if (isExpanded) Int.MAX_VALUE else 3,
             overflow = TextOverflow.Ellipsis,
-            style = MaterialTheme.typography.bodySmall.copy(
-                color = Color.Black,
-                fontSize = 16.sp,
-                lineHeight = 24.sp
-            )
+            style =
+                MaterialTheme.typography.bodySmall.copy(
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    lineHeight = 24.sp,
+                ),
         )
         Spacer(modifier = Modifier.height(4.dp))
         TextButton(
             onClick = { isExpanded = !isExpanded },
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier.align(Alignment.End),
         ) {
             Text(if (isExpanded) "Read Less" else "Read More")
         }
     }
 }
-

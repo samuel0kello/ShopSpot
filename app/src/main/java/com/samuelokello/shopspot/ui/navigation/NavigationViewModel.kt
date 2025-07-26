@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModel
 
 class NavigationViewModel : ViewModel() {
     private var backPressedTime = 0L
-    
+
     fun onBackPressed(
         context: Context,
-        activity: ComponentActivity
+        activity: ComponentActivity,
     ): Boolean {
         val currentTime = System.currentTimeMillis()
         return if (currentTime - backPressedTime > 2000) {

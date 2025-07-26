@@ -28,48 +28,52 @@ fun ProductItem(
     navigateToItemDetails: (productId: Int) -> Unit,
 ) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .clickable {
-                navigateToItemDetails(product.id)
-            },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface,
-            contentColor = MaterialTheme.colorScheme.onSurface
-        )
-    ) {
-        Column(
-            modifier = Modifier
+        modifier =
+            Modifier
                 .fillMaxWidth()
                 .padding(8.dp)
+                .clickable {
+                    navigateToItemDetails(product.id)
+                },
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        colors =
+            CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentColor = MaterialTheme.colorScheme.onSurface,
+            ),
+    ) {
+        Column(
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
         ) {
             Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.Center
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(150.dp)
+                        .clip(RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.Center,
             ) {
-               AsyncImage(
-                   model = product.image,
-                   contentDescription = "",
-                   contentScale = ContentScale.Fit
-               )
+                AsyncImage(
+                    model = product.image,
+                    contentDescription = "",
+                    contentScale = ContentScale.Fit,
+                )
             }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = product.title,
                 style = MaterialTheme.typography.titleMedium,
                 maxLines = 2,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = "$${product.price}",
                 style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
             )
         }
     }

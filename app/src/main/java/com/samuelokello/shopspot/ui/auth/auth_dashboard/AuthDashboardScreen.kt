@@ -30,23 +30,26 @@ import kotlin.system.exitProcess
 @Composable
 fun AuthDashboardScreen(
     navigateToLogin: () -> Unit,
-    navigateToRegister: () -> Unit
+    navigateToRegister: () -> Unit,
 ) {
     Dialog(
         onDismissRequest = {
             exitProcess(0)
         },
-        properties = DialogProperties(
-            dismissOnBackPress = true,
-            dismissOnClickOutside = false,
-            usePlatformDefaultWidth = false
-        )
+        properties =
+            DialogProperties(
+                dismissOnBackPress = true,
+                dismissOnClickOutside = false,
+                usePlatformDefaultWidth = false,
+            ),
     ) {
         Column {
             Box(
-                modifier = Modifier.fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background),
-                contentAlignment = Alignment.TopStart
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background),
+                contentAlignment = Alignment.TopStart,
             ) {
 //                Image(
 //                    painter = painterResource(R.drawable.banner_image),
@@ -56,55 +59,61 @@ fun AuthDashboardScreen(
 //                )
 
                 Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 16.dp, vertical = 16.dp),
-                    verticalArrangement = Arrangement.Bottom
+                    modifier =
+                        Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp, vertical = 16.dp),
+                    verticalArrangement = Arrangement.Bottom,
                 ) {
                     Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 8.dp, end = 24.dp),
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(start = 8.dp, end = 24.dp),
                         color = MaterialTheme.colorScheme.primary,
                         fontSize = 24.sp,
-                        text = "Make your shopping enjoyable with us"
+                        text = "Make your shopping enjoyable with us",
                     )
                     Spacer(modifier = Modifier.height(32.dp))
                     Button(
                         onClick = navigateToLogin,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 8.dp, end = 8.dp),
-                        shape = RoundedCornerShape(8)
-
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(start = 8.dp, end = 8.dp),
+                        shape = RoundedCornerShape(8),
                     ) {
                         Text(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(8.dp),
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp),
                             textAlign = TextAlign.Center,
-                            text = "Sign In"
+                            text = "Sign In",
                         )
                     }
 
                     Spacer(modifier = Modifier.height(24.dp))
                     OutlinedButton(
                         onClick = navigateToRegister,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 8.dp, end = 8.dp),
-                        colors = ButtonDefaults.outlinedButtonColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        ),
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(start = 8.dp, end = 8.dp),
+                        colors =
+                            ButtonDefaults.outlinedButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                            ),
                         border = BorderStroke(1.dp, Color.White),
-                        shape = RoundedCornerShape(8)
+                        shape = RoundedCornerShape(8),
                     ) {
                         Text(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(8.dp),
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp),
                             textAlign = TextAlign.Center,
-                            text = "Sign Up"
+                            text = "Sign Up",
                         )
                     }
                     Spacer(modifier = Modifier.height(42.dp))

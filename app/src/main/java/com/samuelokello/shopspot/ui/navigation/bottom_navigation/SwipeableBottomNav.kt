@@ -29,52 +29,54 @@ fun SwipeableBottomNav(
     selectedIndex: Int,
     onNavigate: (Int, String) -> Unit,
     modifier: Modifier = Modifier,
-    isVisible: Boolean = true
+    isVisible: Boolean = true,
 ) {
     val density = LocalDensity.current
     val bottomBarHeight = 120.dp
     val heightInPx = with(density) { bottomBarHeight.toPx() }
-    
+
     AnimatedVisibility(
         visible = isVisible,
         enter = slideInVertically { heightInPx.toInt() },
-        exit = slideOutVertically { heightInPx.toInt() }
+        exit = slideOutVertically { heightInPx.toInt() },
     ) {
         NavigationBar(
             modifier = modifier.height(bottomBarHeight),
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface,
         ) {
             val items = BottomNavigationItem().bottomNavigationItems()
             val coroutineScope = rememberCoroutineScope()
-            
+
             Box(
-                modifier = Modifier.draggable(
-                    orientation = Orientation.Horizontal,
-                    state = rememberDraggableState { delta ->
-                        // Handle drag gesture
-                        if (delta.absoluteValue > 50) {
-                            // Determine swipe direction
-                            val direction = if (delta > 0) -1 else 1
-                            val newIndex = (selectedIndex + direction).coerceIn(0, items.size - 1)
-                            
-                            if (newIndex != selectedIndex) {
-                                coroutineScope.launch {
-                                    onNavigate(newIndex, items[newIndex].route)
+                modifier =
+                    Modifier.draggable(
+                        orientation = Orientation.Horizontal,
+                        state =
+                            rememberDraggableState { delta ->
+                                // Handle drag gesture
+                                if (delta.absoluteValue > 50) {
+                                    // Determine swipe direction
+                                    val direction = if (delta > 0) -1 else 1
+                                    val newIndex = (selectedIndex + direction).coerceIn(0, items.size - 1)
+
+                                    if (newIndex != selectedIndex) {
+                                        coroutineScope.launch {
+                                            onNavigate(newIndex, items[newIndex].route)
+                                        }
+                                    }
                                 }
-                            }
-                        }
-                    }
-                )
+                            },
+                    ),
             ) {
                 Row {
                     items.forEachIndexed { index, item ->
                         NavigationBarItem(
                             selected = index == selectedIndex,
-                            onClick = { 
+                            onClick = {
                                 onNavigate(index, item.route)
                             },
                             icon = { Icon(item.icon, contentDescription = null) },
-                            label = { Text(text = item.label) }
+                            label = { Text(text = item.label) },
                         )
                     }
                 }
@@ -89,21 +91,21 @@ fun SwipeAbleBottomNav(
     selectedIndex: Int,
     onNavigate: (Int, String) -> Unit,
     modifier: Modifier = Modifier,
-    isVisible: Boolean = true
+    isVisible: Boolean = true,
 ) {
     val items = BottomNavigationItem().bottomNavigationItems()
     val scope = rememberCoroutineScope()
 
-
     AnimatedVisibility(
         visible = isVisible,
         enter = slideInVertically { it },
-        exit = slideOutVertically { it }
+        exit = slideOutVertically { it },
     ) {
         NavigationBar(
             containerColor = MaterialTheme.colorScheme.surface,
-            modifier = modifier
-                .fillMaxWidth()
+            modifier =
+                modifier
+                    .fillMaxWidth(),
         ) {
             items.forEachIndexed { index, item ->
                 NavigationBarItem(
@@ -115,7 +117,7 @@ fun SwipeAbleBottomNav(
                         }
                     },
                     icon = { Icon(item.icon, contentDescription = null) },
-                    label = { Text(text = item.label) }
+                    label = { Text(text = item.label) },
                 )
             }
         }

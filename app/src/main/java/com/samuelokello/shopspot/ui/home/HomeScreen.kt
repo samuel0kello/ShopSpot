@@ -2,7 +2,6 @@ package com.samuelokello.shopspot.ui.home
 
 import android.annotation.SuppressLint
 import android.widget.Toast
-import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -41,7 +40,7 @@ import com.samuelokello.shopspot.ui.components.ErrorView
 fun HomeScreen(
     viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory),
     navigateToItemDetails: (productId: Int) -> Unit,
-    onBackPressed: () -> Unit
+    onBackPressed: () -> Unit,
 ) {
     val state by viewModel.homeUiState.collectAsState()
 
@@ -59,11 +58,11 @@ fun HomeScreen(
     }
 
     when (state) {
-
-        is HomeUiState.Error -> ErrorView(
-            message = (state as HomeUiState.Error).message,
-            onRetry = { viewModel.loadProducts()}
-        )
+        is HomeUiState.Error ->
+            ErrorView(
+                message = (state as HomeUiState.Error).message,
+                onRetry = { viewModel.loadProducts() },
+            )
 
         is HomeUiState.Loading -> LoadingScreen()
 
@@ -80,40 +79,33 @@ fun HomeScreen(
 fun ProductList(
     modifier: Modifier = Modifier,
     products: List<Product>,
-    navigateToItemDetails: (productId: Int) -> Unit
+    navigateToItemDetails: (productId: Int) -> Unit,
 ) {
     Column {
-
-      LazyVerticalGrid(
+        LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small)),
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small)),
-            modifier = modifier.padding()
+            modifier = modifier.padding(),
         ) {
-
             items(products) { product ->
                 ProductItem(
                     product,
-                    navigateToItemDetails = { navigateToItemDetails(product.id) }
+                    navigateToItemDetails = { navigateToItemDetails(product.id) },
                 )
             }
-
         }
     }
 }
 
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
-
-    Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+    Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Image(
             modifier = modifier.size(200.dp),
             painter = painterResource(R.drawable.loading_img),
             contentDescription = stringResource(R.string.loading),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
     }
-
 }
-
-

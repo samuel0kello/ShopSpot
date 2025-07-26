@@ -21,45 +21,49 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.samuelokello.shopspot.ui.navigation.Screens
 import com.samuelokello.shopspot.ui.home.HomeViewModel
+import com.samuelokello.shopspot.ui.navigation.Screens
 import com.samuelokello.shopspot.ui.theme.onPrimaryLight
 import com.samuelokello.shopspot.ui.theme.primaryLight
 
 @Composable
-fun OrderPlacedScreen(navController: NavController, viewModel: HomeViewModel) {
+fun OrderPlacedScreen(
+    navController: NavController,
+    viewModel: HomeViewModel,
+) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         Icon(
             imageVector = Icons.Default.CheckCircle,
             contentDescription = "Order Placed",
             modifier = Modifier.size(100.dp),
-            tint = primaryLight
+            tint = primaryLight,
         )
-        
+
         Spacer(modifier = Modifier.height(24.dp))
-        
+
         Text(
             text = "Order Placed Successfully!",
             style = MaterialTheme.typography.headlineMedium,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
-        
+
         Spacer(modifier = Modifier.height(16.dp))
-        
+
         Text(
             text = "Thank you for your purchase.",
             style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
-        
+
         Spacer(modifier = Modifier.height(32.dp))
-        
+
         Button(
             onClick = {
 //                viewModel.clearCart() // Clear the cart
@@ -67,11 +71,12 @@ fun OrderPlacedScreen(navController: NavController, viewModel: HomeViewModel) {
                     popUpTo(Screens.OrderPlaced.route) { inclusive = true }
                 }
             },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = primaryLight,
-                contentColor = onPrimaryLight
-            ),
-            modifier = Modifier.fillMaxWidth(0.7f)
+            colors =
+                ButtonDefaults.buttonColors(
+                    containerColor = primaryLight,
+                    contentColor = onPrimaryLight,
+                ),
+            modifier = Modifier.fillMaxWidth(0.7f),
         ) {
             Text("Return to Products")
         }
