@@ -17,23 +17,23 @@ interface CartApiService {
     suspend fun getUserCarts(
         @Path("userId") userId: Int,
         @Query("startdate") startDate: String? = null,
-        @Query("enddate") endDate: String? = null
+        @Query("enddate") endDate: String? = null,
     ): List<UserCartResponseDto>
 
     @POST("carts")
     suspend fun addToCart(
-        @Body cart: AddCartRequestDto
+        @Body cart: AddCartRequestDto,
     ): UserCartResponseDto
 
     @PUT("carts/{cartId}")
     suspend fun updateCart(
         @Path("cartId") cartId: Int,
-        @Body cart: UpdateCartRequestDto
+        @Body cart: UpdateCartRequestDto,
     ): UserCartResponseDto
 
     @DELETE("carts/{cartId}")
     suspend fun deleteCart(
-        @Path("cartId") cartId: Int
+        @Path("cartId") cartId: Int,
     ): UserCartResponseDto
 }
 
@@ -45,7 +45,7 @@ data class AddCartRequestDto(
     @SerialName("date")
     val date: String,
     @SerialName("products")
-    val products: List<CartProductDto>
+    val products: List<CartProductDto>,
 )
 
 @Serializable
@@ -55,5 +55,5 @@ data class UpdateCartRequestDto(
     @SerialName("date")
     val date: String,
     @SerialName("products")
-    val products: List<CartProductDto>
+    val products: List<CartProductDto>,
 )

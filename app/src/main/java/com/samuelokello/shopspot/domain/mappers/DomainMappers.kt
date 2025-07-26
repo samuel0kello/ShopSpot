@@ -4,8 +4,8 @@ import com.samuelokello.shopspot.data.local.product.ProductEntity
 import com.samuelokello.shopspot.data.network.product.dto.ProductDto
 import com.samuelokello.shopspot.domain.Product
 
-fun ProductEntity.toDomainModel(): Product {
-    return Product(
+fun ProductEntity.toDomainModel(): Product =
+    Product(
         id = id,
         title = title,
         price = price,
@@ -13,12 +13,11 @@ fun ProductEntity.toDomainModel(): Product {
         category = category,
         image = image,
         rating = rate,
-        count = count
+        count = count,
     )
-}
 
-fun ProductDto.toEntity(): ProductEntity {
-    return ProductEntity(
+fun ProductDto.toEntity(): ProductEntity =
+    ProductEntity(
         id = id,
         title = title,
         price = price,
@@ -26,6 +25,5 @@ fun ProductDto.toEntity(): ProductEntity {
         category = category,
         image = image,
         rate = rating?.rate ?: 0.00,
-        count = rating?.count ?: 0
+        count = rating?.count ?: 0,
     )
-}

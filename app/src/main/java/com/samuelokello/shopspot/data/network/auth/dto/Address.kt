@@ -14,5 +14,5 @@ data class Address(
     @SerialName("street")
     val street: String,
     @SerialName("zipcode")
-    val zipcode: String
+    val zipcode: String,
 )

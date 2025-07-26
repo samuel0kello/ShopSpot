@@ -11,7 +11,5 @@ class CartProductConverter {
     }
 
     @TypeConverter
-    fun fromList(list: List<CartProductEntity>): String {
-        return Gson().toJson(list)
-    }
+    fun fromList(list: List<CartProductEntity>): String = Gson().toJson(list)
 }

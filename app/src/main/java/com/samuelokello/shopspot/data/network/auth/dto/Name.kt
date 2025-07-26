@@ -8,5 +8,5 @@ data class Name(
     @SerialName("firstname")
     val firstname: String,
     @SerialName("lastname")
-    val lastname: String
+    val lastname: String,
 )

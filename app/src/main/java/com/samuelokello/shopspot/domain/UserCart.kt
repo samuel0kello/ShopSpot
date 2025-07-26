@@ -6,11 +6,11 @@ data class UserCart(
     val date: String,
     val products: List<CartProduct>,
     val userId: Int,
-    val v: Int? = null
+    val v: Int? = null,
 )
 
 // CartProduct.kt (Domain Model)
 data class CartProduct(
     val productId: Int,
-    val quantity: Int
+    val quantity: Int,
 )

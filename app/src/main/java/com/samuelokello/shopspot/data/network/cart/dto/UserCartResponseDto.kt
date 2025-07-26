@@ -14,5 +14,5 @@ data class UserCartResponseDto(
     @SerialName("userId")
     val userId: Int,
     @SerialName("__v")
-    val v: Int? = null
+    val v: Int? = null,
 )

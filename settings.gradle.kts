@@ -23,7 +23,6 @@ dependencyResolutionManagement {
 rootProject.name = "ShopSpot"
 include(":app")
 include(":core")
-//include(":core:data")
 include(":core:data")
 include(":core:datasource")
 include(":core:datasource:local")
