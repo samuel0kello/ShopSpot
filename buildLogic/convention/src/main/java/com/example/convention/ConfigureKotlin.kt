@@ -12,8 +12,8 @@ import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.provideDelegate
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinTopLevelExtension
 
 /**
  * This file defines functions to configure Kotlin settings for both Android and JVM
@@ -73,8 +73,8 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
         compileOptions {
             // Up to Java 11 APIs are available through desugaring
             // https://developer.android.com/studio/write/java11-minimal-support-table
-            sourceCompatibility = JavaVersion.VERSION_21
-            targetCompatibility = JavaVersion.VERSION_21
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
             isCoreLibraryDesugaringEnabled = true
         }
     }
@@ -170,7 +170,7 @@ internal fun Project.configureKotlinJvm() {
  *
  *
  */
-private inline fun <reified T : KotlinTopLevelExtension> Project.configureKotlin() =
+private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
     configure<T> {
         // Treat all Kotlin warnings as errors (disabled by default)
         // Override by setting warningsAsErrors=true in your ~/.gradle/gradle.properties
