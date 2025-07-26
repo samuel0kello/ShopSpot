@@ -22,12 +22,11 @@ import org.gradle.api.Project
  * ```
  *
  * Within the `with(target)` block, the `pluginManager` is used to apply two plugins:
- * `org.jetbrains.kotlin.jvm` for Kotlin JVM support and `grapla.android.lint` for linting.
+ * `org.jetbrains.kotlin.jvm` for Kotlin JVM support.
  *
  * ```
  * with(pluginManager) {
  *     apply("org.jetbrains.kotlin.jvm")
- *     apply("grapla.android.lint")
  * }
  * ```
  *
@@ -39,7 +38,7 @@ import org.gradle.api.Project
  * ```
  *
  * In summary, this plugin sets up a JVM library project with the necessary plugins and configurations,
- * including Kotlin JVM support and linting.
+ * including Kotlin JVM support.
  *
  *
  * */
@@ -49,7 +48,6 @@ class JvmLibraryConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.jvm")
-                apply("grapla.android.lint")
             }
             configureKotlinJvm()
         }
