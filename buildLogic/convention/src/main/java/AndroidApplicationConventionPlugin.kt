@@ -30,12 +30,10 @@ import org.gradle.kotlin.dsl.configure
  *  Within the `with(target)` block, the `pluginManager` is used to apply several plugins to the project.
  *  These plugins include `com.android.application` for Android application support,
  *  `org.jetbrains.kotlin.android` for Kotlin support, and
- *  `com.dropbox.dependency-guard` for dependency management.
  *
  *   `with(pluginManager) {
  *     apply("com.android.application")
  *     apply("org.jetbrains.kotlin.android")
- *     apply("com.dropbox.dependency-guard")
  *   }`
  *
  *  Next, the `extensions.configure<ApplicationExtension>` method is used to
@@ -71,7 +69,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
-                apply("com.dropbox.dependency-guard")
             }
 
             extensions.configure<ApplicationExtension> {
