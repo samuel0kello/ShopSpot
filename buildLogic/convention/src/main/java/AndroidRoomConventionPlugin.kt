@@ -81,8 +81,10 @@ import org.gradle.kotlin.dsl.dependencies
 class AndroidRoomConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            pluginManager.apply("shopspot.android.library")
             pluginManager.apply("androidx.room")
             pluginManager.apply("com.google.devtools.ksp")
+//            pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
 
             extensions.configure<KspExtension> {
                 arg("room.generateKotlin", "true")
@@ -96,9 +98,9 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
             }
 
             dependencies {
-                add("implementation", libs.findLibrary("room.runtime").get())
-                add("implementation", libs.findLibrary("room.ktx").get())
-                add("ksp", libs.findLibrary("room.compiler").get())
+                add("implementation", libs.findLibrary("androidx.room.runtime").get())
+                add("implementation", libs.findLibrary("androidx.room.ktx").get())
+                add("ksp", libs.findLibrary("androidx.room.compiler").get())
             }
         }
     }

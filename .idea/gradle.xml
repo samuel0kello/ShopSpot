@@ -25,6 +25,15 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildLogic" />
             <option value="$PROJECT_DIR$/buildLogic/convention" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/data" />
+            <option value="$PROJECT_DIR$/core/datasource" />
+            <option value="$PROJECT_DIR$/core/datasource/local" />
+            <option value="$PROJECT_DIR$/core/datasource/remote" />
+            <option value="$PROJECT_DIR$/core/domain" />
+            <option value="$PROJECT_DIR$/core/presentation" />
+            <option value="$PROJECT_DIR$/core/presentation/designsystem" />
+            <option value="$PROJECT_DIR$/core/presentation/ui" />
           </set>
         </option>
       </GradleProjectSettings>
