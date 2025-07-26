@@ -1,6 +1,5 @@
 import com.android.build.gradle.LibraryExtension
 import com.example.convention.libs
-import com.tamzi.grapla.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -26,12 +25,11 @@ import org.gradle.kotlin.dsl.dependencies
  *  }`
  *
  * Within the with(target) block, the pluginManager is used to apply two custom plugins:
- * grapla.android.library and grapla.hilt.
- * These plugins are essential for setting up the Android library and Hilt dependency injection framework
+ * shopspot.android.library.
+ * These plugins are essential for setting up the Android library
  *
  *  `pluginManager.apply {
- *     apply("grapla.android.library")
- *     apply("grapla.hilt")
+ *     apply("shopspot.android.library")
  *  }`
  *
  *
@@ -42,21 +40,15 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("grapla.android.library")
-                apply("grapla.hilt")
+                apply("shopspot.android.library")
             }
             extensions.configure<LibraryExtension> {
                 testOptions.animationsDisabled = true
             }
 
             dependencies {
-                add("implementation", project(":core:ui"))
-                add("implementation", project(":gruid"))
-
-                add("implementation", libs.findLibrary("androidx.hilt.navigation.compose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
-                add("implementation", libs.findLibrary("androidx.tracing.ktx").get())
 
                 add("androidTestImplementation", libs.findLibrary("androidx.lifecycle.runtimeTesting").get())
             }
