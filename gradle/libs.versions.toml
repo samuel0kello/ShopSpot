@@ -86,3 +86,9 @@ room = { id = "androidx.room", version.ref = "room"}
 
 # plugins defined for this project
 shopspot-android-application = {id= "shopspot.android.application", version ="unspecified"}
+shopspot-android-application-compose = { id = "shopspot.android.application.compose", version = "unspecified"}
+shopspot-android-library = { id = "shopspot.android.library", version = "unspecified"}
+shopspot-android-library-compose = { id = "shopspot.android.library.compose", version = "unspecified"}
+shopspot-android-room = { id = "shopspot.android.room", version = "unspecified"}
+shopspot-android-test = { id = "shopspot.android.test", version = "unspecified"}
+shopspot-jvm-library = { id = "shopspot.jvm.library", version = "unspecified"}
