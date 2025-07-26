@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.auth.forgot_password
+package com.samuelokello.shopspot.ui.auth.forgotpassword
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*

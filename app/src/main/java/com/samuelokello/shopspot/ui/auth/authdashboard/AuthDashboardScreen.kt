@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.auth.auth_dashboard
+package com.samuelokello.shopspot.ui.auth.authdashboard
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

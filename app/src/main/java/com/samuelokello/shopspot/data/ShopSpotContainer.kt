@@ -120,11 +120,11 @@ class DefaultAppContainer(
 
     companion object {
         @Volatile
-        private var Instance: ShopSpotContainer? = null
+        private var instance: ShopSpotContainer? = null
 
         fun getInstance(context: Context): ShopSpotContainer =
-            Instance ?: synchronized(this) {
-                Instance ?: DefaultAppContainer(context).also { Instance = it }
+            instance ?: synchronized(this) {
+                instance ?: DefaultAppContainer(context).also { instance = it }
             }
     }
 }

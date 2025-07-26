@@ -20,14 +20,14 @@ abstract class ShopSpotDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var Instance: ShopSpotDatabase? = null
+        private var instance: ShopSpotDatabase? = null
 
         fun getDatabase(context: Context): ShopSpotDatabase =
-            Instance ?: synchronized(this) {
+            instance ?: synchronized(this) {
                 Room
                     .databaseBuilder(context, ShopSpotDatabase::class.java, "shop_spot_db")
                     .build()
-                    .also { Instance = it }
+                    .also { instance = it }
             }
     }
 }

@@ -27,8 +27,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.samuelokello.shopspot.ui.AppViewModelProvider
-import com.samuelokello.shopspot.ui.auth.auth_dashboard.AuthDashboardScreen
-import com.samuelokello.shopspot.ui.auth.forgot_password.ForgotPasswordScreen
+import com.samuelokello.shopspot.ui.auth.authdashboard.AuthDashboardScreen
+import com.samuelokello.shopspot.ui.auth.forgotpassword.ForgotPasswordScreen
 import com.samuelokello.shopspot.ui.auth.login.LoginScreen
 import com.samuelokello.shopspot.ui.auth.register.RegisterScreen
 import com.samuelokello.shopspot.ui.cart.CartScreen
@@ -37,7 +37,7 @@ import com.samuelokello.shopspot.ui.components.topBarManager
 import com.samuelokello.shopspot.ui.favourite.FavouriteScreen
 import com.samuelokello.shopspot.ui.home.HomeScreen
 import com.samuelokello.shopspot.ui.home.HomeViewModel
-import com.samuelokello.shopspot.ui.navigation.bottom_navigation.SwipeAbleBottomNav
+import com.samuelokello.shopspot.ui.navigation.bottomnavigation.SwipeAbleBottomNav
 import com.samuelokello.shopspot.ui.order.OrderPlacedScreen
 import com.samuelokello.shopspot.ui.productdetails.ProductDetailsScreen
 import com.samuelokello.shopspot.ui.profile.ProfileScreen

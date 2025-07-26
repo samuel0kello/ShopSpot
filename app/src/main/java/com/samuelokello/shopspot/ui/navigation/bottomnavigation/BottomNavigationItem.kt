@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.navigation.bottom_navigation
+package com.samuelokello.shopspot.ui.navigation.bottomnavigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
