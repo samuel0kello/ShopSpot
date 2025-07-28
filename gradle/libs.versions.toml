@@ -91,7 +91,7 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint"}
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
@@ -105,3 +105,18 @@ shopspot-android-library-compose = { id = "shopspot.android.library.compose", ve
 shopspot-android-room = { id = "shopspot.android.room", version = "unspecified"}
 shopspot-android-test = { id = "shopspot.android.test", version = "unspecified"}
 shopspot-jvm-library = { id = "shopspot.jvm.library", version = "unspecified"}
+shopspot-jvm-ktor = { id = "shopspot.jvm.ktor", version = "unspecified"}
+
+
+
+[bundles]
+
+
+ktor = [
+    "ktor-client-auth",
+    "ktor-client-cio",
+    "ktor-client-content-negotiation",
+    "ktor-client-core",
+    "ktor-client-logging",
+    "ktor-serialization-kotlinx-json"
+]

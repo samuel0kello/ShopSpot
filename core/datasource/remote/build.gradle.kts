@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.shopspot.android.library)
+    alias(libs.plugins.shopspot.jvm.ktor)
 }
 
 android {
