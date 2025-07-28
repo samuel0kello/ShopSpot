@@ -33,18 +33,22 @@ interface ShopSpotContainer {
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = AUTH_PREFERENCES)
 
-class DefaultAppContainer(private val context: Context) : ShopSpotContainer {
+class DefaultAppContainer(
+    private val context: Context,
+) : ShopSpotContainer {
     private val baseUrl = "https://fakestoreapi.com/"
 
-    private val json = Json {
-        ignoreUnknownKeys = true
-        coerceInputValues = true
-        isLenient = true
-    }
+    private val json =
+        Json {
+            ignoreUnknownKeys = true
+            coerceInputValues = true
+            isLenient = true
+        }
 
     // Network
     private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
+        Retrofit
+            .Builder()
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .baseUrl(baseUrl)
             .build()
@@ -96,32 +100,31 @@ class DefaultAppContainer(private val context: Context) : ShopSpotContainer {
             productApiService = productApiService,
             productDao = productDao,
             productEntityMapper = productEntityMapper,
-            productApiMapper = productApiMapper
+            productApiMapper = productApiMapper,
         )
     }
 
     override val cartRepository: CartRepository by lazy {
         CartRepositoryImpl(
             api = cartApiService,
-            dao = cartDao
+            dao = cartDao,
         )
     }
 
     override val loginRepository: LoginRepository by lazy {
         LoginRepositoryImpl(
             authPreferences = authPreferences,
-            authApiService = authApiService
+            authApiService = authApiService,
         )
     }
 
     companion object {
         @Volatile
-        private var Instance: ShopSpotContainer? = null
+        private var instance: ShopSpotContainer? = null
 
-        fun getInstance(context: Context): ShopSpotContainer {
-            return Instance ?: synchronized(this) {
-                Instance ?: DefaultAppContainer(context).also { Instance = it }
+        fun getInstance(context: Context): ShopSpotContainer =
+            instance ?: synchronized(this) {
+                instance ?: DefaultAppContainer(context).also { instance = it }
             }
-        }
     }
 }

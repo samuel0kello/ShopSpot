@@ -4,8 +4,8 @@ import com.samuelokello.shopspot.data.local.product.ProductEntity
 import com.samuelokello.shopspot.domain.Product
 
 class ProductEntityMapper {
-    fun toDomain(entity: ProductEntity): Product {
-        return Product(
+    fun toDomain(entity: ProductEntity): Product =
+        Product(
             id = entity.id,
             title = entity.title,
             price = entity.price,
@@ -13,12 +13,11 @@ class ProductEntityMapper {
             category = entity.category,
             image = entity.image,
             rating = entity.rate,
-            count = entity.count
+            count = entity.count,
         )
-    }
 
-    fun toEntity(domain: Product): ProductEntity {
-        return ProductEntity(
+    fun toEntity(domain: Product): ProductEntity =
+        ProductEntity(
             id = domain.id,
             title = domain.title,
             price = domain.price,
@@ -26,8 +25,6 @@ class ProductEntityMapper {
             category = domain.category,
             image = domain.image,
             rate = domain.rating,
-            count = domain.count
+            count = domain.count,
         )
-    }
 }
-

@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.auth.forgot_password
+package com.samuelokello.shopspot.ui.auth.forgotpassword
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
@@ -18,20 +18,19 @@ import androidx.compose.ui.unit.sp
 import com.samuelokello.shopspot.R
 
 @Composable
-fun ForgotPasswordScreen(
-    modifier: Modifier = Modifier
-) {
+fun ForgotPasswordScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
     ForgotPasswordScreenContent(
         modifier = modifier,
         onClickForgotPassword = {
-            Toast.makeText(
-                context,
-                context.getString(R.string.no_password_request_link),
-                Toast.LENGTH_LONG
-            ).show()
-        }
+            Toast
+                .makeText(
+                    context,
+                    context.getString(R.string.no_password_request_link),
+                    Toast.LENGTH_LONG,
+                ).show()
+        },
     )
 }
 
@@ -42,14 +41,14 @@ private fun ForgotPasswordScreenContent(
 ) {
     LazyColumn(
         modifier = modifier,
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = PaddingValues(16.dp),
     ) {
         item {
             Column(Modifier.padding(end = 16.dp)) {
                 Text(
                     text = stringResource(R.string.please_enter_an_email_address_that_you_had_registered_with_so_that_we_can_send_you_a_password_reset_link),
                     fontSize = 12.sp,
-                    fontWeight = FontWeight.Light
+                    fontWeight = FontWeight.Light,
                 )
             }
         }
@@ -63,10 +62,11 @@ private fun ForgotPasswordScreenContent(
                 label = {
                     Text(text = "Email")
                 },
-                keyboardOptions = KeyboardOptions(
-                    autoCorrectEnabled = true,
-                    keyboardType = KeyboardType.Email
-                ),
+                keyboardOptions =
+                    KeyboardOptions(
+                        autoCorrectEnabled = true,
+                        keyboardType = KeyboardType.Email,
+                    ),
             )
         }
 
@@ -76,14 +76,15 @@ private fun ForgotPasswordScreenContent(
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = onClickForgotPassword,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(8.dp),
             ) {
                 Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
                     text = "Continue",
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
                 )
             }
         }

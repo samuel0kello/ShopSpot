@@ -5,5 +5,5 @@ data class Cart(
     val id: Int,
     val cartProduct: List<CartProduct>,
     val userId: Int,
-    val v: Int
+    val v: Int,
 )

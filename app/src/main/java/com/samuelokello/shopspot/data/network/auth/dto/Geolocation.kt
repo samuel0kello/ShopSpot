@@ -8,5 +8,5 @@ data class Geolocation(
     @SerialName("lat")
     val lat: String,
     @SerialName("long")
-    val long: String
+    val long: String,
 )

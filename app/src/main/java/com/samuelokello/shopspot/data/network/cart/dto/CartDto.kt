@@ -5,5 +5,5 @@ data class CartDto(
     val quantity: Int,
     val date: String,
     val userId: Int,
-    val v: Int
+    val v: Int,
 )

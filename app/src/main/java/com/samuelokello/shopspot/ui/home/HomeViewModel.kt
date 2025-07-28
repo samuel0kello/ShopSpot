@@ -14,22 +14,21 @@ import kotlinx.coroutines.launch
 /**
  * ViewModel
  */
-class HomeViewModel(private val repository: ProductRepository) : ViewModel() {
-
+class HomeViewModel(
+    private val repository: ProductRepository,
+) : ViewModel() {
     private val _homeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
-    var homeUiState: StateFlow<HomeUiState> =_homeUiState.asStateFlow()
-
+    var homeUiState: StateFlow<HomeUiState> = _homeUiState.asStateFlow()
 
     fun loadProducts() {
         viewModelScope.launch {
-            repository.getProducts()
+            repository
+                .getProducts()
                 .onStart {
                     _homeUiState.value = HomeUiState.Loading
-                }
-                .catch {
+                }.catch {
                     _homeUiState.value = HomeUiState.Error(message = it.message ?: " ")
-                }
-                .collect { products ->
+                }.collect { products ->
                     _homeUiState.value = HomeUiState.Success(products)
                 }
         }
@@ -42,6 +41,12 @@ class HomeViewModel(private val repository: ProductRepository) : ViewModel() {
 
 sealed interface HomeUiState {
     data object Loading : HomeUiState
-    data class Error(val message: String) : HomeUiState
-    data class Success(val products:List<Product>) :HomeUiState
+
+    data class Error(
+        val message: String,
+    ) : HomeUiState
+
+    data class Success(
+        val products: List<Product>,
+    ) : HomeUiState
 }

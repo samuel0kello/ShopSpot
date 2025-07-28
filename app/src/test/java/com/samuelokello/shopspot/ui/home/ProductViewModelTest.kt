@@ -13,62 +13,60 @@ import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Rule
-
 import org.junit.Test
-
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ProductViewModelTest {
-
     @get:Rule
-    val testDispatcher= TestDispatcherRule()
-
-
-    @Test
-    fun homeViewModel_loadProducts_verifyHomeUiStateSuccess() = runTest {
-        val homeViewModel = HomeViewModel(repository = FakeProductRepository())
-
-        homeViewModel.loadProducts()
-
-        advanceUntilIdle()
-
-        val expectedProducts = FakeDataSource.fakeProductsList.first()
-        val expectedState = homeViewModel.homeUiState.value
-
-        assertEquals(HomeUiState.Success(expectedProducts), expectedState)
-    }
+    val testDispatcher = TestDispatcherRule()
 
     @Test
-    fun homeViewModel_loadProducts_verifyErrorState() = runTest {
-        val errorRepository = object : ProductRepository {
-            override fun getProducts(): Flow<List<Product>> = flow {
-                throw Exception("Network Error")
-            }
+    fun homeViewModel_loadProducts_verifyHomeUiStateSuccess() =
+        runTest {
+            val homeViewModel = HomeViewModel(repository = FakeProductRepository())
 
-            override fun searchProductsWithFilters(
-                query: String,
-                minPrice: Double?,
-                maxPrice: Double?,
-                category: String?,
-                minCount: Int?,
-                minRating: Double?
-            ): Flow<List<Product>> {
-                TODO("Not yet implemented")
-            }
+            homeViewModel.loadProducts()
 
-            override fun getProductById(id: Int): Product {
-                TODO("Not yet implemented")
-            }
+            advanceUntilIdle()
+
+            val expectedProducts = FakeDataSource.fakeProductsList.first()
+            val expectedState = homeViewModel.homeUiState.value
+
+            assertEquals(HomeUiState.Success(expectedProducts), expectedState)
         }
-        val homeViewModel = HomeViewModel(repository = errorRepository)
 
-        homeViewModel.loadProducts()
+    @Test
+    fun homeViewModel_loadProducts_verifyErrorState() =
+        runTest {
+            val errorRepository =
+                object : ProductRepository {
+                    override fun getProducts(): Flow<List<Product>> =
+                        flow {
+                            throw Exception("Network Error")
+                        }
 
-        advanceUntilIdle()
+                    override fun searchProductsWithFilters(
+                        query: String,
+                        minPrice: Double?,
+                        maxPrice: Double?,
+                        category: String?,
+                        minCount: Int?,
+                        minRating: Double?,
+                    ): Flow<List<Product>> {
+                        TODO("Not yet implemented")
+                    }
 
-        val expectedState = homeViewModel.homeUiState.value
-        assertEquals(HomeUiState.Error, expectedState)
-    }
+                    override fun getProductById(id: Int): Product {
+                        TODO("Not yet implemented")
+                    }
+                }
+            val homeViewModel = HomeViewModel(repository = errorRepository)
 
+            homeViewModel.loadProducts()
 
+            advanceUntilIdle()
+
+            val expectedState = homeViewModel.homeUiState.value
+            assertEquals(HomeUiState.Error, expectedState)
+        }
 }

@@ -1,10 +1,9 @@
-package  com.samuelokello.shopspot.ui.cart
-
+package com.samuelokello.shopspot.ui.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samuelokello.shopspot.data.repository.ProductRepository
 import com.samuelokello.shopspot.data.repository.CartRepository
+import com.samuelokello.shopspot.data.repository.ProductRepository
 import com.samuelokello.shopspot.domain.UserCart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class CartViewModel(
     private val cartRepository: CartRepository,
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<CartUiState>(CartUiState.Loading)
     val uiState: StateFlow<CartUiState> = _uiState.asStateFlow()
@@ -32,7 +31,8 @@ class CartViewModel(
     private fun fetchCartItems() {
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = CartUiState.Loading
-            cartRepository.getUserCarts(USER_ID) // Replace USER_ID with actual user ID
+            cartRepository
+                .getUserCarts(USER_ID) // Replace USER_ID with actual user ID
                 .collect { result ->
                     result.fold(
                         onSuccess = { carts ->
@@ -46,7 +46,7 @@ class CartViewModel(
                         },
                         onFailure = { exception ->
                             _uiState.value = CartUiState.Error("Failed to load cart: ${exception.message}")
-                        }
+                        },
                     )
                 }
         }
@@ -55,10 +55,11 @@ class CartViewModel(
     private fun loadCartWithProducts(cart: UserCart) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val cartItems = cart.products.map { cartProduct ->
-                    val product = productRepository.getProductById(cartProduct.productId)
-                    CartItem(product, cartProduct.quantity)
-                }
+                val cartItems =
+                    cart.products.map { cartProduct ->
+                        val product = productRepository.getProductById(cartProduct.productId)
+                        CartItem(product, cartProduct.quantity)
+                    }
                 _cartItems.value = cartItems
                 calculateTotal()
                 _uiState.value = CartUiState.Success(cartItems)
@@ -66,15 +67,18 @@ class CartViewModel(
                 _uiState.value = CartUiState.Error("Failed to load product details: ${e.message}")
             }
         }
-
     }
 
-    fun updateQuantity(productId: Int, increase: Boolean) {
+    fun updateQuantity(
+        productId: Int,
+        increase: Boolean,
+    ) {
         viewModelScope.launch(Dispatchers.IO) {
             val item = _cartItems.value.find { it.product.id == productId } ?: return@launch
             val newQuantity = if (increase) item.quantity + 1 else (item.quantity - 1).coerceAtLeast(1)
 
-            cartRepository.updateItemQuantity(USER_ID, productId, newQuantity)
+            cartRepository
+                .updateItemQuantity(USER_ID, productId, newQuantity)
                 .collect { result ->
                     result.fold(
                         onSuccess = { updatedCart ->
@@ -83,7 +87,7 @@ class CartViewModel(
                         },
                         onFailure = { exception ->
                             _uiState.value = CartUiState.Error("Failed to update quantity: ${exception.message}")
-                        }
+                        },
                     )
                 }
         }
@@ -91,7 +95,8 @@ class CartViewModel(
 
     fun removeItem(productId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            cartRepository.removeItemFromCart(USER_ID, productId)
+            cartRepository
+                .removeItemFromCart(USER_ID, productId)
                 .collect { result ->
                     result.fold(
                         onSuccess = { updatedCart ->
@@ -100,7 +105,7 @@ class CartViewModel(
                         },
                         onFailure = { exception ->
                             _uiState.value = CartUiState.Error("Failed to remove item: ${exception.message}")
-                        }
+                        },
                     )
                 }
         }
@@ -112,7 +117,8 @@ class CartViewModel(
 
     fun refreshCart() {
         viewModelScope.launch(Dispatchers.IO) {
-            cartRepository.refreshCarts(USER_ID)
+            cartRepository
+                .refreshCarts(USER_ID)
                 .collect { result ->
                     result.fold(
                         onSuccess = { carts ->
@@ -123,7 +129,7 @@ class CartViewModel(
                         },
                         onFailure = { exception ->
                             _uiState.value = CartUiState.Error("Failed to refresh cart: ${exception.message}")
-                        }
+                        },
                     )
                 }
         }
@@ -131,7 +137,8 @@ class CartViewModel(
 
     fun clearCart() {
         viewModelScope.launch {
-            cartRepository.clearCart(USER_ID)
+            cartRepository
+                .clearCart(USER_ID)
                 .collect { result ->
                     result.fold(
                         onSuccess = {
@@ -141,7 +148,7 @@ class CartViewModel(
                         },
                         onFailure = { exception ->
                             _uiState.value = CartUiState.Error("Failed to clear cart: ${exception.message}")
-                        }
+                        },
                     )
                 }
         }
@@ -150,10 +157,16 @@ class CartViewModel(
     companion object {
         private const val USER_ID = 1 // Replace with actual user ID from authentication
     }
-
 }
+
 sealed interface CartUiState {
     data object Loading : CartUiState
-    data class Success(val items: List<CartItem>) : CartUiState
-    data class Error(val message: String) : CartUiState
+
+    data class Success(
+        val items: List<CartItem>,
+    ) : CartUiState
+
+    data class Error(
+        val message: String,
+    ) : CartUiState
 }

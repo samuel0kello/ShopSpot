@@ -4,9 +4,8 @@ import com.samuelokello.shopspot.data.repository.ProductRepository
 import com.samuelokello.shopspot.domain.Product
 import kotlinx.coroutines.flow.Flow
 
-class FakeProductRepository: ProductRepository {
+class FakeProductRepository : ProductRepository {
     override fun getProducts(): Flow<List<Product>> = FakeDataSource.fakeProductsList
-
 
     override fun searchProductsWithFilters(
         query: String,
@@ -14,11 +13,10 @@ class FakeProductRepository: ProductRepository {
         maxPrice: Double?,
         category: String?,
         minCount: Int?,
-        minRating: Double?
+        minRating: Double?,
     ): Flow<List<Product>> = FakeDataSource.fakeProductsList
 
     override fun getProductById(id: Int): Product {
         TODO("Not yet implemented")
     }
-
 }

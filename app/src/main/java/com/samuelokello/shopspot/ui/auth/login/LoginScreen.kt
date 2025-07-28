@@ -40,7 +40,7 @@ fun LoginScreen(
     navigateToRegister: () -> Unit,
     navigateToHome: () -> Unit,
     navigateToForgotPassword: () -> Unit,
-    viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
+    viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
     val uiState by viewModel.uiState
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -61,10 +61,9 @@ fun LoginScreen(
         onSignInClick = {
             keyboardController?.hide()
             viewModel.onEvent(LoginEvent.Submit)
-        }
+        },
     )
 }
-
 
 @Composable
 private fun LoginScreenContent(
@@ -74,7 +73,7 @@ private fun LoginScreenContent(
     onRememberMeChange: (Boolean) -> Unit,
     onForgotPasswordClick: () -> Unit,
     onRegisterClick: () -> Unit,
-    onSignInClick: () -> Unit
+    onSignInClick: () -> Unit,
 ) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
@@ -92,7 +91,7 @@ private fun LoginScreenContent(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     maxLines = 1,
                     singleLine = true,
-                    isError = uiState.usernameError != null
+                    isError = uiState.usernameError != null,
                 )
                 uiState.usernameError?.let { error ->
                     Text(
@@ -100,7 +99,7 @@ private fun LoginScreenContent(
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error,
                         textAlign = TextAlign.End,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
                     )
                 }
             }
@@ -117,7 +116,7 @@ private fun LoginScreenContent(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     maxLines = 1,
                     singleLine = true,
-                    isError = uiState.passwordError != null
+                    isError = uiState.passwordError != null,
                 )
                 uiState.passwordError?.let { error ->
                     Text(
@@ -125,7 +124,7 @@ private fun LoginScreenContent(
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error,
                         textAlign = TextAlign.End,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
                     )
                 }
             }
@@ -136,15 +135,15 @@ private fun LoginScreenContent(
             Row(
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Checkbox(
                         checked = uiState.rememberMe,
-                        onCheckedChange = onRememberMeChange
+                        onCheckedChange = onRememberMeChange,
                     )
                     Text(text = "Remember me", fontSize = 12.sp)
                 }
@@ -159,14 +158,15 @@ private fun LoginScreenContent(
             Button(
                 onClick = onSignInClick,
                 shape = RoundedCornerShape(8),
-                enabled = !uiState.isLoading
+                enabled = !uiState.isLoading,
             ) {
                 Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
                     text = "Sign In",
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
                 )
             }
         }
@@ -175,21 +175,23 @@ private fun LoginScreenContent(
             Spacer(modifier = Modifier.height(24.dp))
             TextButton(
                 onClick = onRegisterClick,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             ) {
                 Text(
-                    text = buildAnnotatedString {
-                        append("Don't have an account? ")
-                        withStyle(
-                            style = SpanStyle(
-                                color = MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
-                            )
-                        ) {
-                            append("Sign Up")
-                        }
-                    },
-                    textAlign = TextAlign.Center
+                    text =
+                        buildAnnotatedString {
+                            append("Don't have an account? ")
+                            withStyle(
+                                style =
+                                    SpanStyle(
+                                        color = MaterialTheme.colorScheme.primary,
+                                        fontWeight = FontWeight.Bold,
+                                    ),
+                            ) {
+                                append("Sign Up")
+                            }
+                        },
+                    textAlign = TextAlign.Center,
                 )
             }
         }
@@ -198,7 +200,7 @@ private fun LoginScreenContent(
             Row(
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 if (uiState.isLoading) {
                     CircularProgressIndicator()
@@ -212,7 +214,7 @@ private fun LoginScreenContent(
                     text = error,
                     color = MaterialTheme.colorScheme.error,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
                 )
             }
         }

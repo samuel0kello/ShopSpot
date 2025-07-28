@@ -20,5 +20,5 @@ data class UserResponseDto(
     @SerialName("username")
     val username: String,
     @SerialName("__v")
-    val v: Int
+    val v: Int,
 )
