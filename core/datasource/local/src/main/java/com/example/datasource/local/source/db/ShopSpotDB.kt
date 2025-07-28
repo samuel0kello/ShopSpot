@@ -2,8 +2,7 @@ package com.example.datasource.local.source.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.datasource.local.source.entity.ProductEntity
-import com.example.datasource.local.source.entity.UserCartEntity
+import com.example.datasource.local.source.entity.product.ProductEntity
 
 @Database(
     entities = [ProductEntity::class, UserCartEntity::class],
