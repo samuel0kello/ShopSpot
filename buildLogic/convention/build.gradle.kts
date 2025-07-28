@@ -64,5 +64,9 @@ gradlePlugin {
             id = "shopspot.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
+        register("jvmKtor") {
+            id = "shopspot.jvm.ktor"
+            implementationClass = "JvmKtorConventionPlugin"
+        }
     }
 }
