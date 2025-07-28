@@ -9,11 +9,10 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-
 interface PreferenceHelper {
     suspend fun <D> save(
         key: Preferences.Key<D>,
-        data: D
+        data: D,
     )
 
     suspend fun <D> delete(key: Preferences.Key<D>)
@@ -24,9 +23,12 @@ interface PreferenceHelper {
 class PreferencesHelperImpl(
     private val dataStore: DataStore<Preferences>,
 ) : PreferenceHelper {
-    override suspend fun <D> save(key: Preferences.Key<D>, data: D) {
+    override suspend fun <D> save(
+        key: Preferences.Key<D>,
+        data: D,
+    ) {
         dataStore.edit {
-            it[key] =data
+            it[key] = data
         }
     }
 
@@ -36,12 +38,11 @@ class PreferencesHelperImpl(
         }
     }
 
-    override fun <D> get(key: Preferences.Key<D>): Flow<D?> {
-        return dataStore.data.map {
-            it[key]
-        }.catch { e ->
-            if (e is IOException) emptyPreferences()
-        }
-    }
-
+    override fun <D> get(key: Preferences.Key<D>): Flow<D?> =
+        dataStore.data
+            .map {
+                it[key]
+            }.catch { e ->
+                if (e is IOException) emptyPreferences()
+            }
 }

@@ -10,11 +10,10 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
-
 }
 
 dependencies {
@@ -23,5 +22,4 @@ dependencies {
 
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
-
 }
