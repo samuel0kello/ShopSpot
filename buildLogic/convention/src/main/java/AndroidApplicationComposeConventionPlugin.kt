@@ -1,9 +1,11 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.example.convention.configureAndroidCompose
+import com.example.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
 /**
@@ -58,6 +60,10 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 configureAndroidCompose(this)
+            }
+
+            dependencies {
+                add("implementation", libs.findBundle("koin").get())
             }
         }
     }

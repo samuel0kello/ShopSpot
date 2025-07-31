@@ -60,7 +60,7 @@ import org.gradle.kotlin.dsl.kotlin
  * }
  * ```
  *
- * The `dependencies` block is used to add various dependencies to the project. It includes dependencies for Android tests and an implementation dependency for `androidx.tracing.ktx`.
+ * The `dependencies` block is used to add various dependencies to the project. It includes dependencies for Android tests.
  *
  * ```
  * dependencies {
@@ -100,6 +100,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             dependencies {
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
+                add("implementation", libs.findBundle("koin").get())
 
 //                add("implementation", libs.findLibrary("androidx.tracing.ktx").get())
                 //add("implementation", project.findProperty("libs.androidx.tracing.ktx") as Provider<*>)

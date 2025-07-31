@@ -16,7 +16,9 @@ jetbrainsKotlinJvm = "2.2.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 junitKtx = "1.2.1"
-kotlin = "2.2.0"
+koin = "4.0.0"
+kotlin = "2.1.21"
+kotlinxCoroutines = "1.10.2"
 kotlinxCoroutinesTest = "1.10.2"
 kotlinxSerializationJson = "1.9.0"
 ksp = "2.1.21-2.0.2"
@@ -58,6 +60,11 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+koin-andoid = { group = "io.insert-koin", name = "koin-android", version.ref = "koin"}
+koin-andoid-workmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin"}
+koin-andoidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin"}
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"}
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines"}
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson"}
 ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
@@ -111,6 +118,7 @@ shopspot-jvm-ktor = { id = "shopspot.jvm.ktor", version = "unspecified"}
 
 [bundles]
 
+koin = [ "koin-core", "koin-andoid", "koin-andoid-workmanager"]
 
 ktor = [
     "ktor-client-auth",
