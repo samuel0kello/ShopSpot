@@ -78,6 +78,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
+                apply("org.jetbrains.kotlin.plugin.serialization")
             }
 
             extensions.configure<LibraryExtension> {
@@ -101,6 +102,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", kotlin("test"))
                 add("testImplementation", kotlin("test"))
                 add("implementation", libs.findBundle("koin").get())
+
+                add("implementation", libs.findLibrary("kotlinx.serialization.json").get())
 
 //                add("implementation", libs.findLibrary("androidx.tracing.ktx").get())
                 //add("implementation", project.findProperty("libs.androidx.tracing.ktx") as Provider<*>)

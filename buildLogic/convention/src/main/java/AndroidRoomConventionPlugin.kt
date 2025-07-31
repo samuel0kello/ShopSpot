@@ -84,7 +84,7 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
             pluginManager.apply("shopspot.android.library")
             pluginManager.apply("androidx.room")
             pluginManager.apply("com.google.devtools.ksp")
-//            pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
+            pluginManager.apply("org.jetbrains.kotlin.plugin.serialization")
 
             extensions.configure<KspExtension> {
                 arg("room.generateKotlin", "true")
