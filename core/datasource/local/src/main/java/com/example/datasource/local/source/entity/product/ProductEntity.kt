@@ -21,5 +21,5 @@ data class ProductEntity(
     val availabilityStatus: String?,
     val returnPolicy: String?,
     val minimumOrderQuantity: Int,
-    val thumbnail: String?
+    val thumbnail: String?,
 )

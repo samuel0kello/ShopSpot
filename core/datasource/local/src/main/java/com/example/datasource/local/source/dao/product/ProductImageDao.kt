@@ -5,7 +5,6 @@ import com.example.datasource.local.source.entity.product.ProductImageEntity
 
 @Dao
 interface ProductImageDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertImages(images: List<ProductImageEntity>)
 

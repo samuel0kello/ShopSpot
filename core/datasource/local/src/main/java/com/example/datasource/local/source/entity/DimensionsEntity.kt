@@ -8,5 +8,5 @@ data class DimensionsEntity(
     @PrimaryKey val productId: Int,
     val width: Double,
     val height: Double,
-    val depth: Double
+    val depth: Double,
 )

@@ -10,5 +10,5 @@ data class CartEntity(
     val total: Double,
     val discountedTotal: Double,
     val totalProducts: Int,
-    val totalQuantity: Int
+    val totalQuantity: Int,
 )

@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class ProductImageEntity(
     @PrimaryKey(autoGenerate = true) val imageId: Int = 0,
     val productId: Int,
-    val imageUrl: String
+    val imageUrl: String,
 )

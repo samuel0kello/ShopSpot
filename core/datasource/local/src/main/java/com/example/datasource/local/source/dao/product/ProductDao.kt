@@ -26,12 +26,14 @@ interface ProductDao {
     @Query("SELECT * FROM products WHERE title LIKE '%' || :query || '%'")
     suspend fun searchProducts(query: String): List<ProductEntity>
 
-    //sort products by price
+    // sort products by price
     @Query("SELECT * FROM products ORDER BY price ASC")
     suspend fun getProductsByPriceAsc(): List<ProductEntity>
 
-    //pagination and search
+    // pagination and search
     @Query("SELECT * FROM products LIMIT :limit OFFSET :offset")
-    suspend fun getProductsByPage(limit: Int, offset: Int): List<ProductEntity>
-
+    suspend fun getProductsByPage(
+        limit: Int,
+        offset: Int,
+    ): List<ProductEntity>
 }

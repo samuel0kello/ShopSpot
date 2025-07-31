@@ -5,7 +5,6 @@ import com.example.datasource.local.source.entity.DimensionsEntity
 
 @Dao
 interface DimensionsDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDimensions(dimensions: DimensionsEntity)
 

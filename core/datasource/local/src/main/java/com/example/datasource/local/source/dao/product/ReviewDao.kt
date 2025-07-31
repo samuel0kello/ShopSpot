@@ -5,7 +5,6 @@ import com.example.datasource.local.source.entity.ReviewEntity
 
 @Dao
 interface ReviewDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertReviews(reviews: List<ReviewEntity>)
 

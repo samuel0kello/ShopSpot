@@ -5,7 +5,6 @@ import com.example.datasource.local.source.entity.MetaEntity
 
 @Dao
 interface MetaDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMeta(meta: MetaEntity)
 

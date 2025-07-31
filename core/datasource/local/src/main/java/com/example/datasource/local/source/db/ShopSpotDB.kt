@@ -26,8 +26,8 @@ import com.example.datasource.local.source.entity.user.UserEntity
         ProductTagCrossRef::class,
         ReviewEntity::class,
         TagEntity::class,
-        UserEntity::class
-   ],
+        UserEntity::class,
+    ],
     version = 1,
     autoMigrations = [],
 )

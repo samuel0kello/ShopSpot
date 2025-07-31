@@ -9,5 +9,5 @@ data class MetaEntity(
     val createdAt: String,
     val updatedAt: String,
     val barcode: String,
-    val qrCode: String?
+    val qrCode: String?,
 )

@@ -11,5 +11,5 @@ data class ReviewEntity(
     val comment: String,
     val date: String, // Store as ISO string or use Date type with converters
     val reviewerName: String,
-    val reviewerEmail: String
+    val reviewerEmail: String,
 )
