@@ -19,12 +19,15 @@ Demo
 
 ## Screenshots
 <p float="left">
- <image src = "images/ScreenShot_2.jpg" height = "350px">
- <image src = "images/ScreenShot_3.jpg" height = "350.px">
- <image src = "images/product_details.jpg" height = "350.px">
- <image src = "images/ScreenShot_4.jpg" height = "350.px">
- <image src = "images/ScrrenShot_1.jpg" height = "350.px">
- <image src = "images/ScreenShot_5.jpg" height = "350.px">
+<img width="244" height="513" alt="image" src="https://github.com/user-attachments/assets/1e918d0b-5832-4e22-8769-2272937728d9" />
+<img width="241" height="506" alt="image" src="https://github.com/user-attachments/assets/ef79e487-5abd-49fc-9860-831184e541ab" />
+<img width="248" height="507" alt="image" src="https://github.com/user-attachments/assets/7c22b9ff-5e82-4ec3-a630-8036c5754458" />
+<img width="246" height="518" alt="image" src="https://github.com/user-attachments/assets/d7fa69a6-bf5c-45e7-b436-c11d49089513" />
+<img width="247" height="515" alt="image" src="https://github.com/user-attachments/assets/2a77b256-a719-4b23-89fb-b46c9fa85d82" />
+<img width="261" height="529" alt="image" src="https://github.com/user-attachments/assets/88f3556c-4572-483a-8905-2950119c8688" />
+<img width="256" height="518" alt="image" src="https://github.com/user-attachments/assets/a31abe7b-ad58-4465-8e87-fea52ef1b37c" />
+<img width="250" height="506" alt="image" src="https://github.com/user-attachments/assets/d1d82f0b-e748-4020-b0ed-7a9bf90a789a" />
+
 </p>
  
 
