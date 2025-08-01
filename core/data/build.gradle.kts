@@ -18,4 +18,6 @@ android {
 
 dependencies {
     implementation(project(":core:domain"))
+    implementation(project(":core:datasource:remote"))
+    implementation(project(":core:datasource:local"))
 }
