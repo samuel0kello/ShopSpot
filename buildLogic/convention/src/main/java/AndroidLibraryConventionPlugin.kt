@@ -105,8 +105,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
                 add("implementation", libs.findLibrary("kotlinx.serialization.json").get())
 
-//                add("implementation", libs.findLibrary("androidx.tracing.ktx").get())
-                //add("implementation", project.findProperty("libs.androidx.tracing.ktx") as Provider<*>)
+                add("testImplementation", libs.findLibrary("junit").get())
+                add("testImplementation", libs.findLibrary("kotlinx.coroutines.test").get())
             }
         }
     }
