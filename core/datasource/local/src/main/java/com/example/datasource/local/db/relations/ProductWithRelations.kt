@@ -1,12 +1,12 @@
-package com.example.datasource.local.source.relations
+package com.example.datasource.local.db.relations
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.example.datasource.local.source.entity.DimensionsEntity
-import com.example.datasource.local.source.entity.MetaEntity
-import com.example.datasource.local.source.entity.ReviewEntity
-import com.example.datasource.local.source.entity.product.ProductEntity
-import com.example.datasource.local.source.entity.product.ProductImageEntity
+import com.example.datasource.local.entity.DimensionsEntity
+import com.example.datasource.local.entity.MetaEntity
+import com.example.datasource.local.entity.ReviewEntity
+import com.example.datasource.local.entity.product.ProductEntity
+import com.example.datasource.local.entity.product.ProductImageEntity
 
 data class ProductWithRelations(
     @Embedded val product: ProductEntity,

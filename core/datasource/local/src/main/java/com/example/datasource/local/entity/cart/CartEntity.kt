@@ -1,4 +1,4 @@
-package com.example.datasource.local.source.entity.cart
+package com.example.datasource.local.entity.cart
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

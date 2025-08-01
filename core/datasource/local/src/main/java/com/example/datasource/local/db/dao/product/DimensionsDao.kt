@@ -1,7 +1,7 @@
-package com.example.datasource.local.source.dao.product
+package com.example.datasource.local.db.dao.product
 
 import androidx.room.*
-import com.example.datasource.local.source.entity.DimensionsEntity
+import com.example.datasource.local.entity.DimensionsEntity
 
 @Dao
 interface DimensionsDao {

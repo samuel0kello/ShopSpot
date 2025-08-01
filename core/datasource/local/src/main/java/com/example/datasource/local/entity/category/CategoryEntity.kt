@@ -1,4 +1,4 @@
-package com.example.datasource.local.source.entity.category
+package com.example.datasource.local.entity.category
 
 import androidx.room.Entity
 
