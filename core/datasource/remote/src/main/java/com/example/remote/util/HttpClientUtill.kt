@@ -84,4 +84,6 @@ internal suspend inline fun <reified Res : Any> mapResponseCodes(response: HttpR
         else -> Result.Error(DataError.Network.UNKNOWN)
     }
 
-internal fun createRoute(path: String): String = ""
+private const val BASE_URL = "https://dummyjson.com/"
+
+internal fun createRoute(path: String): String = BASE_URL + path
