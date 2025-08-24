@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.profile
+package com.samuelokello.feat.profile
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
