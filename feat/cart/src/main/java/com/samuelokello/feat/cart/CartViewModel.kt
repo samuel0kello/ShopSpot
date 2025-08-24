@@ -1,15 +1,17 @@
-package com.samuelokello.shopspot.ui.cart
+package com.samuelokello.feat.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samuelokello.shopspot.data.repository.CartRepository
-import com.samuelokello.shopspot.data.repository.ProductRepository
-import com.samuelokello.shopspot.domain.UserCart
+import com.samuelokello.core.domain.model.CartItem
+import com.samuelokello.core.domain.model.UserCart
+import com.samuelokello.core.domain.repository.CartRepository
+import com.samuelokello.core.domain.repository.ProductRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlin.collections.sumOf
 
 class CartViewModel(
     private val cartRepository: CartRepository,

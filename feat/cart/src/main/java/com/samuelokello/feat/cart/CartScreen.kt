@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.cart
+package com.samuelokello.feat.cart
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,15 +35,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.samuelokello.shopspot.ui.AppViewModelProvider
-import com.samuelokello.shopspot.ui.components.ErrorView
+import com.samuelokello.core.domain.model.CartItem
+import com.samuelokello.core.presentation.designsystem.components.ErrorView
+import org.koin.androidx.compose.koinViewModel
 import java.util.Locale
 
 @Composable
 fun CartScreen(
-    viewModel: CartViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: CartViewModel = koinViewModel(),
     navigateToCheckout: () -> Unit,
     navigateToHome: () -> Unit,
 ) {
