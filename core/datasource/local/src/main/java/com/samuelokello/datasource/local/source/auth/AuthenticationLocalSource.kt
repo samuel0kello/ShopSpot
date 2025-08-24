@@ -1,7 +1,7 @@
-package com.example.datasource.local.source.auth
+package com.samuelokello.datasource.local.source.auth
 
-import com.example.datasource.local.source.preference.PreferenceHelper
-import com.example.datasource.local.source.preference.PreferenceKeys
+import com.samuelokello.datasource.local.source.preference.PreferenceHelper
+import com.samuelokello.datasource.local.source.preference.PreferenceKeys
 import kotlinx.coroutines.flow.Flow
 
 interface AuthenticationLocalSource {
