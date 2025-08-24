@@ -1,4 +1,4 @@
-package com.example.remote.models
+package com.samuelokello.remote.models
 
 import kotlinx.serialization.Serializable
 
@@ -12,5 +12,5 @@ data class LoginResponseDto(
     val gender: String,
     val image: String,
     val accessToken: String,
-    val refreshToken: String
+    val refreshToken: String,
 )

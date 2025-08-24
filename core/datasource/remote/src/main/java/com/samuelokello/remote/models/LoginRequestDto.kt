@@ -1,4 +1,4 @@
-package com.example.remote.models
+package com.samuelokello.remote.models
 
 import kotlinx.serialization.Serializable
 
@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 data class LoginRequestDto(
     val username: String,
     val password: String,
-    val expiresInMins: Int? = null
+    val expiresInMins: Int? = null,
 )
