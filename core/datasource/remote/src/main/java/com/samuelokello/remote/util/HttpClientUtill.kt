@@ -1,8 +1,8 @@
-package com.example.remote.util
+package com.samuelokello.remote.util
 
 import android.util.Log
-import com.example.core.domain.util.DataError
-import com.example.core.domain.util.Result
+import com.samuelokello.core.domain.util.DataError
+import com.samuelokello.core.domain.util.Result
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.delete
