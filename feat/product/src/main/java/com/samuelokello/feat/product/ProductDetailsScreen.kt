@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.productdetails
+package com.samuelokello.feat.product
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
@@ -33,15 +33,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.samuelokello.shopspot.domain.Product
-import com.samuelokello.shopspot.ui.AppViewModelProvider
+import com.samuelokello.core.domain.model.Product
+import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ProductDetailsScreen(
-    viewModel: ProductDetailViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: ProductDetailViewModel = koinViewModel(),
     productId: Int,
 ) {
     val state by viewModel.state.collectAsState()

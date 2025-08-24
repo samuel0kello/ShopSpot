@@ -1,11 +1,11 @@
-package com.samuelokello.shopspot.ui.productdetails
+package com.samuelokello.feat.product
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samuelokello.shopspot.data.repository.CartRepository
-import com.samuelokello.shopspot.data.repository.ProductRepository
-import com.samuelokello.shopspot.domain.Product
+import com.samuelokello.core.domain.model.Product
+import com.samuelokello.core.domain.repository.CartRepository
+import com.samuelokello.core.domain.repository.ProductRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

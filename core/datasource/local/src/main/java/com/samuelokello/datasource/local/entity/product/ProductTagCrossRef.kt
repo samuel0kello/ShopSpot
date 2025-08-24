@@ -1,4 +1,4 @@
-package com.example.datasource.local.entity.product
+package com.samuelokello.datasource.local.entity.product
 
 import androidx.room.Entity
 
