@@ -1,6 +1,7 @@
-package com.samuelokello.shopspot.ui.navigation
+package com.samuelokello.core.presentation.ui.navigation
 
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -26,26 +27,24 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.samuelokello.shopspot.ui.AppViewModelProvider
-import com.samuelokello.shopspot.ui.auth.authdashboard.AuthDashboardScreen
-import com.samuelokello.shopspot.ui.auth.forgotpassword.ForgotPasswordScreen
-import com.samuelokello.shopspot.ui.auth.login.LoginScreen
-import com.samuelokello.shopspot.ui.auth.register.RegisterScreen
-import com.samuelokello.shopspot.ui.cart.CartScreen
-import com.samuelokello.shopspot.ui.components.ShopSpotTopAppBar
-import com.samuelokello.shopspot.ui.components.topBarManager
-import com.samuelokello.shopspot.ui.favourite.FavouriteScreen
-import com.samuelokello.shopspot.ui.home.HomeScreen
-import com.samuelokello.shopspot.ui.home.HomeViewModel
-import com.samuelokello.shopspot.ui.navigation.bottomnavigation.SwipeAbleBottomNav
-import com.samuelokello.shopspot.ui.order.OrderPlacedScreen
-import com.samuelokello.shopspot.ui.productdetails.ProductDetailsScreen
-import com.samuelokello.shopspot.ui.profile.ProfileScreen
-import com.samuelokello.shopspot.ui.search.SearchScreen
+import com.example.order.OrderPlacedScreen
+import com.samuelokello.core.domain.model.Screens
+import com.samuelokello.core.presentation.designsystem.components.ShopSpotTopAppBar
+import com.samuelokello.core.presentation.designsystem.components.bottomnav.SwipeAbleBottomNav
+import com.samuelokello.core.presentation.designsystem.components.topBarManager
+import com.samuelokello.feat.auth.presentation.dashboard.AuthDashboardScreen
+import com.samuelokello.feat.auth.presentation.forgotpassword.ForgotPasswordScreen
+import com.samuelokello.feat.auth.presentation.login.LoginScreen
+import com.samuelokello.feat.auth.presentation.register.RegisterScreen
+import com.samuelokello.feat.cart.CartScreen
+import com.samuelokello.feat.favourite.FavouriteScreen
+import com.samuelokello.feat.home.HomeScreen
+import com.samuelokello.feat.product.ProductDetailsScreen
+import com.samuelokello.feat.profile.ProfileScreen
+import com.samuelokello.feat.search.SearchScreen
 
 @Composable
 fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
-    val viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory)
     val navController = rememberNavController()
     val currentBackStack by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStack?.destination?.route
@@ -60,7 +59,7 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
     val bottomBarHeight = 80.dp
     with(LocalDensity.current) { bottomBarHeight.toPx() }
 
-    val activity = LocalContext.current as ComponentActivity
+    val activity = LocalActivity.current as ComponentActivity
     val context = LocalContext.current
 
     val nestedScrollConnection =
@@ -184,7 +183,7 @@ fun ShopSpotAppNavHost(navigationViewModel: NavigationViewModel = viewModel()) {
                 ProfileScreen(modifier = Modifier)
             }
             composable(Screens.OrderPlaced.route) {
-                OrderPlacedScreen(navController = navController, viewModel = viewModel)
+                OrderPlacedScreen(navigateBack = { navController.popBackStack() })
             }
             composable(
                 route = "${Screens.ProductDetailsScreen.route}/{productId}",
