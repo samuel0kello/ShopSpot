@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.samuelokello.shopspot.ui.navigation.ShopSpotAppNavHost
-import com.samuelokello.shopspot.ui.theme.ShopSpotTheme
+import com.samuelokello.core.presentation.designsystem.ShopSpotTheme
+import com.samuelokello.core.presentation.ui.navigation.ShopSpotAppNavHost
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 class MainActivity : ComponentActivity() {
@@ -14,9 +14,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ShopSpotTheme {
+            ShopSpotTheme(content = {
                 ShopSpotAppNavHost()
-            }
+            })
         }
     }
 }
