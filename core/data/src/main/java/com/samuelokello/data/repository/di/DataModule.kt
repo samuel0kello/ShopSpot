@@ -1,9 +1,8 @@
-package com.example.data.di
+package com.samuelokello.data.repository.di
 
-import com.example.core.domain.repository.AuthenticationRepository
-import com.example.data.repository.AuthenticationRepositoryImpl
+import com.samuelokello.core.domain.repository.AuthenticationRepository
+import com.samuelokello.data.repository.repository.AuthenticationRepositoryImpl
 import org.koin.dsl.module
-import kotlin.math.sin
 
 val dataModule =
     module {

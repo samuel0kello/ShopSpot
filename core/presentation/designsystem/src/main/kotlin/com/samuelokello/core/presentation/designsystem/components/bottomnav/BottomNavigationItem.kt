@@ -1,11 +1,11 @@
-package com.samuelokello.shopspot.ui.navigation.bottomnavigation
+package com.samuelokello.core.presentation.designsystem.components.bottomnav
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.samuelokello.shopspot.ui.navigation.Screens
+import com.samuelokello.core.domain.model.Screens
 
 data class BottomNavigationItem(
     val label: String = "",
