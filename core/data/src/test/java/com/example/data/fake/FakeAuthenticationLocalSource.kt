@@ -1,6 +1,6 @@
 package com.example.data.fake
 
-import com.example.datasource.local.source.auth.AuthenticationLocalSource
+import com.samuelokello.datasource.local.source.auth.AuthenticationLocalSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
