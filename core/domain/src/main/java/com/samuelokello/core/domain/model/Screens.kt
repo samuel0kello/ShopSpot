@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.navigation
+package com.samuelokello.core.domain.model
 
 sealed class Screens(
     val route: String,
