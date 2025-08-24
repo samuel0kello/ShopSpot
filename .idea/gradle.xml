@@ -34,6 +34,15 @@
             <option value="$PROJECT_DIR$/core/presentation" />
             <option value="$PROJECT_DIR$/core/presentation/designsystem" />
             <option value="$PROJECT_DIR$/core/presentation/ui" />
+            <option value="$PROJECT_DIR$/feat" />
+            <option value="$PROJECT_DIR$/feat/auth" />
+            <option value="$PROJECT_DIR$/feat/cart" />
+            <option value="$PROJECT_DIR$/feat/favourite" />
+            <option value="$PROJECT_DIR$/feat/home" />
+            <option value="$PROJECT_DIR$/feat/order" />
+            <option value="$PROJECT_DIR$/feat/product" />
+            <option value="$PROJECT_DIR$/feat/profile" />
+            <option value="$PROJECT_DIR$/feat/search" />
           </set>
         </option>
       </GradleProjectSettings>
