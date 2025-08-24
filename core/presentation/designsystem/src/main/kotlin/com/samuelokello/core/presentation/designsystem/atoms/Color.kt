@@ -1,6 +1,23 @@
-package com.samuelokello.shopspot.ui.theme
+package com.samuelokello.core.presentation.designsystem.atoms
 
 import androidx.compose.ui.graphics.Color
+
+/**
+ * these are the Primary colours from design spec document
+ */
+val ShopSpotBrown = Color(0xFF904A43)
+val ShopSpotWhite = Color(0xFFFFFFFF)
+
+/**
+ * these are the Secondary colours from design spec document
+ */
+
+// TODO("Add secondary colors")
+
+/**
+ * these are the Neutral colours from design spec document
+ */
+// TODO("Add Neutral colors")
 
 val primaryLight = Color(0xFF904A43)
 val onPrimaryLight = Color(0xFFFFFFFF)

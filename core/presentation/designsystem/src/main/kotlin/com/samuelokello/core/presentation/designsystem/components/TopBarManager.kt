@@ -1,13 +1,13 @@
-package com.samuelokello.shopspot.ui.components
+package com.samuelokello.core.presentation.designsystem.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
-import com.samuelokello.shopspot.ui.navigation.Screens
-import com.samuelokello.shopspot.util.TopBarConfig
-import com.samuelokello.shopspot.util.TopBarType
+import com.samuelokello.core.domain.model.Screens
+import com.samuelokello.core.presentation.designsystem.util.TopBarConfig
+import com.samuelokello.core.presentation.designsystem.util.TopBarType
 
 @Composable
 fun topBarManager(

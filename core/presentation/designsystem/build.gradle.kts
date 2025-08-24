@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.core.presentation.designsystem"
+    namespace = "com.samuelokello.core.presentation.designsystem"
 
     buildTypes {
         release {
@@ -25,5 +25,6 @@ android {
         api(libs.androidx.compose.ui.tooling.preview)
         api(libs.androidx.material3)
         api(libs.coil.compose)
+        api(project(":core:domain"))
     }
 }

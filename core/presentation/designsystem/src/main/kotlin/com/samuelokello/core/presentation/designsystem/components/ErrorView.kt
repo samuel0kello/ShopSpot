@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.components
+package com.samuelokello.core.presentation.designsystem.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.samuelokello.shopspot.R
+import com.samuelokello.core.presentation.designsystem.R
 
 @Composable
 fun ErrorView(
@@ -35,7 +35,7 @@ fun ErrorView(
         verticalArrangement = Arrangement.Center,
     ) {
         Icon(
-            painter = painterResource(R.drawable.ic_connection_error),
+            painter = painterResource(R.drawable.core_presentation_designsystem_ic_connection_error),
             contentDescription = "Error",
             modifier = Modifier.size(48.dp),
             tint = MaterialTheme.colorScheme.error,

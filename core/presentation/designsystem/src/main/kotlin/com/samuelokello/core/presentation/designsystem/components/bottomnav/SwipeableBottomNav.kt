@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.navigation.bottomnavigation
+package com.samuelokello.core.presentation.designsystem.components.bottomnav
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
@@ -20,7 +20,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import androidx.wear.compose.material.ExperimentalWearMaterialApi
 import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 
@@ -85,7 +84,6 @@ fun SwipeableBottomNav(
     }
 }
 
-@OptIn(ExperimentalWearMaterialApi::class)
 @Composable
 fun SwipeAbleBottomNav(
     selectedIndex: Int,

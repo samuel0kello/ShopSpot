@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.components
+package com.samuelokello.core.presentation.designsystem.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
@@ -13,8 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.samuelokello.shopspot.util.TopBarConfig
-import com.samuelokello.shopspot.util.TopBarType
+import com.samuelokello.core.presentation.designsystem.util.TopBarConfig
+import com.samuelokello.core.presentation.designsystem.util.TopBarType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

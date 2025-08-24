@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.util
+package com.samuelokello.core.presentation.designsystem.util
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.runtime.Composable
