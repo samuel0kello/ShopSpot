@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.favourite
+package com.samuelokello.feat.favourite
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
