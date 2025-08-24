@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.example.convention.configureKotlinAndroid
+import com.example.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -43,12 +44,16 @@ import org.gradle.kotlin.dsl.configure
  *
  *   `extensions.configure<ApplicationExtension> {
  *     configureKotlinAndroid(this)
- *     defaultConfig.targetSdk = 35
+ *     defaultConfig.targetSdk = libs
+ *                 .findVersion("projectTargetSdkVersion")
+ *                 .get()
+ *                 .toString()
+ *                 .toInt()
  *     @Suppress("UnstableApiUsage")
  *     testOptions.animationsDisabled = true
  *  }`
  *
- *  The `defaultConfig.targetSdk` property is set to `35`, which specifies the target SDK version for the project.
+ *  The `defaultConfig.targetSdk` property is set to `36` defined in version catalog file, which specifies the target SDK version for the project.
  *
  *  The `@Suppress("UnstableApiUsage")` annotation is used to suppress warnings about unstable API usage.
  *
@@ -57,7 +62,7 @@ import org.gradle.kotlin.dsl.configure
  *  This plugin is designed to configure Android application projects with specific settings and plugins.
  *
  *  Within the `ApplicationExtension` configuration block,
- *  the targetSdk version is set to 34, and animations are disabled in test options to speed up tests.
+ *  the targetSdk version is set to 36, and animations are disabled in test options to speed up tests.
  *
  *
  *
@@ -74,8 +79,18 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = 35
-                defaultConfig.minSdk = 21
+                defaultConfig.targetSdk =
+                    libs
+                        .findVersion("projectTargetSdkVersion")
+                        .get()
+                        .toString()
+                        .toInt()
+                defaultConfig.minSdk =
+                    libs
+                        .findVersion("projectMinSdkVersion")
+                        .get()
+                        .toString()
+                        .toInt()
                 @Suppress("UnstableApiUsage")
                 testOptions.animationsDisabled = true
             }
