@@ -14,6 +14,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinBaseExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import kotlin.text.get
+import kotlin.toString
 
 /**
  * This file defines functions to configure Kotlin settings for both Android and JVM
@@ -30,12 +32,20 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
  * for the Project class in Gradle, designed to configure Kotlin and Android-specific options for a project.
  * It takes a CommonExtension parameter, which represents the common configuration options for Android projects.
  * Within the function, the commonExtension is configured to set
- * the compileSdk version to 34 and the minSdk version to 21 in the defaultConfig block:
+ * the compileSdk version to 36 and the minSdk version to 21 in the defaultConfig block:
  *
- *  `compileSdk = 34
+ *  `compileSdk = libs
+ *                 .findVersion("projectCompileSdkVersion")
+ *                 .get()
+ *                 .toString()
+ *                 .toInt()
  *
  *  defaultConfig {
- *     minSdk = 21
+ *     minSdk = libs
+ *                 .findVersion("projectMinSdkVersion")
+ *                 .get()
+ *                 .toString()
+ *                 .toInt()
  *  }`
  *
  *  The compileOptions block is configured to set the sourceCompatibility and targetCompatibility
@@ -64,17 +74,27 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
  */
 internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.apply {
-        compileSdk = 35
+        compileSdk =
+            libs
+                .findVersion("projectCompileSdkVersion")
+                .get()
+                .toString()
+                .toInt()
 
         defaultConfig {
-            minSdk = 28
+            minSdk =
+                libs
+                    .findVersion("projectMinSdkVersion")
+                    .get()
+                    .toString()
+                    .toInt()
         }
 
         compileOptions {
             // Up to Java 11 APIs are available through desugaring
             // https://developer.android.com/studio/write/java11-minimal-support-table
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
             isCoreLibraryDesugaringEnabled = true
         }
     }
@@ -82,8 +102,14 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
     configureKotlin<KotlinAndroidProjectExtension>()
 
     dependencies {
-        add("coreLibraryDesugaring",
-            project.extensions.getByType<VersionCatalogsExtension>().named("libs").findLibrary("android.desugarJdkLibs").get())
+        add(
+            "coreLibraryDesugaring",
+            project.extensions
+                .getByType<VersionCatalogsExtension>()
+                .named("libs")
+                .findLibrary("android.desugarJdkLibs")
+                .get(),
+        )
     }
 }
 
@@ -120,8 +146,8 @@ internal fun Project.configureKotlinJvm() {
     extensions.configure<JavaPluginExtension> {
         // Up to Java 11 APIs are available through desugaring
         // https://developer.android.com/studio/write/java11-minimal-support-table
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     configureKotlin<KotlinJvmProjectExtension>()
@@ -180,7 +206,7 @@ private inline fun <reified T : KotlinBaseExtension> Project.configureKotlin() =
             is KotlinJvmProjectExtension -> compilerOptions
             else -> TODO("Unsupported project extension $this ${T::class}")
         }.apply {
-            jvmTarget = JvmTarget.JVM_17
+            jvmTarget = JvmTarget.JVM_11
             allWarningsAsErrors = warningsAsErrors.toBoolean()
             freeCompilerArgs.add(
                 // Enable experimental coroutines APIs, including Flow
