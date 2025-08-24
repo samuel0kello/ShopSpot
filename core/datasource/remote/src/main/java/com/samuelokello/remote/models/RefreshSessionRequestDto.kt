@@ -1,4 +1,4 @@
-package com.example.remote.models
+package com.samuelokello.remote.models
 
 import kotlinx.serialization.Serializable
 
