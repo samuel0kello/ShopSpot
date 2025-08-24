@@ -20,14 +20,21 @@ dependencyResolutionManagement {
     }
 }
 
+gradle.startParameter.excludedTaskNames.addAll(listOf(":buildLogic:convention:testClasses"))
+
 rootProject.name = "ShopSpot"
 include(":app")
-include(":core")
 include(":core:data")
-include(":core:datasource")
 include(":core:datasource:local")
 include(":core:datasource:remote")
 include(":core:domain")
-include(":core:presentation")
 include(":core:presentation:designsystem")
 include(":core:presentation:ui")
+include(":feat:auth")
+include(":feat:home")
+include(":feat:cart")
+include(":feat:order")
+include(":feat:product")
+include(":feat:search")
+include(":feat:profile")
+include(":feat:favourite")
