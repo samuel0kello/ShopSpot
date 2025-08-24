@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.order
+package com.example.order
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,16 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.samuelokello.shopspot.ui.home.HomeViewModel
-import com.samuelokello.shopspot.ui.navigation.Screens
-import com.samuelokello.shopspot.ui.theme.onPrimaryLight
-import com.samuelokello.shopspot.ui.theme.primaryLight
 
 @Composable
 fun OrderPlacedScreen(
-    navController: NavController,
-    viewModel: HomeViewModel,
+    navigateBack: () -> Unit,
+//    viewModel: OrderPlacedViewModel,
 ) {
     Column(
         modifier =
@@ -43,7 +38,7 @@ fun OrderPlacedScreen(
             imageVector = Icons.Default.CheckCircle,
             contentDescription = "Order Placed",
             modifier = Modifier.size(100.dp),
-            tint = primaryLight,
+//            tint = primaryLight,
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -66,15 +61,15 @@ fun OrderPlacedScreen(
 
         Button(
             onClick = {
-//                viewModel.clearCart() // Clear the cart
-                navController.navigate(Screens.Home.route) {
-                    popUpTo(Screens.OrderPlaced.route) { inclusive = true }
-                }
+                //                viewModel.clearCart() // Clear the cart
+                //                navController.navigate(Screens.Home.route) {
+                //                    popUpTo(Screens.OrderPlaced.route) { inclusive = true }
+                //                }
             },
             colors =
                 ButtonDefaults.buttonColors(
-                    containerColor = primaryLight,
-                    contentColor = onPrimaryLight,
+//                    containerColor = primaryLight,
+//                    contentColor = onPrimaryLight,
                 ),
             modifier = Modifier.fillMaxWidth(0.7f),
         ) {
