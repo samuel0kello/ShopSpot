@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.auth.forgotpassword
+package com.samuelokello.feat.auth.presentation.forgotpassword
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
@@ -15,7 +15,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.samuelokello.shopspot.R
+import com.samuelokello.core.presentation.designsystem.R
 
 @Composable
 fun ForgotPasswordScreen(modifier: Modifier = Modifier) {
