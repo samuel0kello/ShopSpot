@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.search
+package com.samuelokello.feat.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -44,16 +44,15 @@ import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.samuelokello.shopspot.domain.Product
-import com.samuelokello.shopspot.ui.AppViewModelProvider
+import com.samuelokello.core.domain.model.Product
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
-    viewModel: SearchViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: SearchViewModel = koinViewModel(),
     navigateToItemDetails: (product: Product) -> Unit,
 ) {
     val searchUiState by viewModel.searchUiState.collectAsState()

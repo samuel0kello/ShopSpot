@@ -1,9 +1,9 @@
-package com.samuelokello.shopspot.ui.search
+package com.samuelokello.feat.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samuelokello.shopspot.data.repository.ProductRepository
-import com.samuelokello.shopspot.domain.Product
+import com.samuelokello.core.domain.model.Product
+import com.samuelokello.core.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
