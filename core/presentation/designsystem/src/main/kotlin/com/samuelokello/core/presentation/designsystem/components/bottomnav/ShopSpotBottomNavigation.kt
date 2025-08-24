@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.navigation.bottomnavigation
+package com.samuelokello.core.presentation.designsystem.components.bottomnav
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
