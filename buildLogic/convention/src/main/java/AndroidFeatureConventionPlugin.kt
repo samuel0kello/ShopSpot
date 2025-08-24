@@ -41,16 +41,17 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
         with(target) {
             pluginManager.apply {
                 apply("shopspot.android.library")
+                apply("shopspot.android.library.compose")
             }
             extensions.configure<LibraryExtension> {
                 testOptions.animationsDisabled = true
             }
 
             dependencies {
-                add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
-                add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.runtime.ktx").get())
+                add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.compose").get())
 
-                add("androidTestImplementation", libs.findLibrary("androidx.lifecycle.runtimeTesting").get())
+                add("implementation", libs.findBundle("koin").get())
             }
         }
     }
