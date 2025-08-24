@@ -1,8 +1,9 @@
-package com.example.core.domain.model
+package com.samuelokello.core.domain.model
 
 data class UserCredentials(
     val username: String,
     val password: String,
+    val rememberMe: Boolean = false,
 )
 
 data class SessionTokens(

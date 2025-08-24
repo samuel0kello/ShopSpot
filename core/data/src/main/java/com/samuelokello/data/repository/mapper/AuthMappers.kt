@@ -1,14 +1,14 @@
-package com.example.data.mapper
+package com.samuelokello.data.repository.mapper
 
-import com.example.core.domain.model.AuthenticatedUser
-import com.example.core.domain.model.LoginResponse
-import com.example.core.domain.model.SessionTokens
-import com.example.core.domain.model.SessionTokensRequest
-import com.example.core.domain.model.UserCredentials
-import com.example.remote.models.CurrentUserResponseDto
-import com.example.remote.models.LoginRequestDto
-import com.example.remote.models.LoginResponseDto
-import com.example.remote.models.RefreshSessionRequestDto
+import com.samuelokello.core.domain.model.AuthenticatedUser
+import com.samuelokello.core.domain.model.LoginResponse
+import com.samuelokello.core.domain.model.SessionTokens
+import com.samuelokello.core.domain.model.SessionTokensRequest
+import com.samuelokello.core.domain.model.UserCredentials
+import com.samuelokello.remote.models.CurrentUserResponseDto
+import com.samuelokello.remote.models.LoginRequestDto
+import com.samuelokello.remote.models.LoginResponseDto
+import com.samuelokello.remote.models.RefreshSessionRequestDto
 
 fun LoginResponseDto.toDomainSessionTokens(): SessionTokens =
     SessionTokens(
