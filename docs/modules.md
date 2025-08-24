@@ -12,15 +12,15 @@ ShopSpot is structured for modularity and scalability using  both layered-based 
 
 ## Modules
 
-| Module                 | Folder                 | Description                                      | Dependencies                       |
-|:-----------------------|:-----------------------|:-------------------------------------------------|:-----------------------------------|
-| app                    | app                    | Mobile app entry point, navigation orchestration | `:feature:*`, `:core`              |
-| core:data              | core/data              | Data accessors, repositories, models             | `:core:datasource`, `:core:domain` |
-| core:datasource:local  | core/datasource/local  | Local data sources (Room DB, preferences)        | -                                  |
-| core:datasource:remote | core/datasource/remote | Remote data sources (API services)               | -                                  |
-| core:domain            | core/domain            | Business logic, use cases                        | -                                  |
-| core:presentation      | core/presentation      | Shared presentation logic, utilities             | -                                  |
-| feature:module-name    | feature/module         | Module screens and logic                         | `:core:*`                          |
+| Module                 | Folder                 | Description                                      | Dependencies                          |
+|:-----------------------|:-----------------------|:-------------------------------------------------|:--------------------------------------|
+| app                    | app                    | Mobile app entry point, navigation orchestration | `:feature:*`, `:core`                 |
+| core:data              | core/data              | Data accessors, repositories, models             | `:core:datasource:*`, `:core:domain`  |
+| core:datasource:local  | core/datasource/local  | Local data sources (Room DB, preferences)        | -                                     |
+| core:datasource:remote | core/datasource/remote | Remote data sources (API services)               | `core:domain`                         |
+| core:domain            | core/domain            | Business logic, use cases                        | -                                     |
+| core:presentation      | core/presentation      | Shared presentation logic, utilities             | -                                     |
+| feature:module-name    | feature/module         | Module screens and logic                         | `:core:domain`, `:core:presentation`  |
 
 ## Modularization Approach
 
