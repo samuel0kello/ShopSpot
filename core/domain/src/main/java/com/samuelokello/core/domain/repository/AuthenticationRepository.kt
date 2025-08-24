@@ -1,12 +1,12 @@
-package com.example.core.domain.repository
+package com.samuelokello.core.domain.repository
 
-import com.example.core.domain.model.AuthenticatedUser
-import com.example.core.domain.model.LoginResponse
-import com.example.core.domain.model.SessionTokens
-import com.example.core.domain.model.SessionTokensRequest
-import com.example.core.domain.model.UserCredentials
-import com.example.core.domain.util.DataError
-import com.example.core.domain.util.Result
+import com.samuelokello.core.domain.model.AuthenticatedUser
+import com.samuelokello.core.domain.model.LoginResponse
+import com.samuelokello.core.domain.model.SessionTokens
+import com.samuelokello.core.domain.model.SessionTokensRequest
+import com.samuelokello.core.domain.model.UserCredentials
+import com.samuelokello.core.domain.util.DataError
+import com.samuelokello.core.domain.util.Result
 import kotlinx.coroutines.flow.Flow
 
 interface AuthenticationRepository {
