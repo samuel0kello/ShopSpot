@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.datasource.local"
+    namespace = "com.samuelokello.datasource.local"
 
     buildTypes {
         release {
@@ -21,5 +21,5 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 
 //    implementation(project(":core:data"))
-//    implementation(project(":core:domain"))
+    implementation(project(":core:domain"))
 }

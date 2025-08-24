@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.core.data"
+    namespace = "com.samuelokello.core.data"
 
     buildTypes {
         release {

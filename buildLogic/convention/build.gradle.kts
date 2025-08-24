@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.example.shopspot.buildlogic"
+group = "com.samuelokello.shopspot.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -15,7 +15,6 @@ kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_17
     }
-
 }
 
 dependencies {
@@ -67,6 +66,10 @@ gradlePlugin {
         register("jvmKtor") {
             id = "shopspot.jvm.ktor"
             implementationClass = "JvmKtorConventionPlugin"
+        }
+        register("androidFeature") {
+            id = "shopspot.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
         }
     }
 }

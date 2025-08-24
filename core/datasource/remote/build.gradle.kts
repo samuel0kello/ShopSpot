@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.datasource.remote"
+    namespace = "com.samuelokello.datasource.remote"
 
     buildTypes {
         release {
