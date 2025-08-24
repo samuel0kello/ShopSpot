@@ -1,4 +1,4 @@
-package com.example.datasource.local.entity
+package com.samuelokello.datasource.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

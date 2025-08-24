@@ -1,4 +1,4 @@
-package com.example.datasource.local.source.preference
+package com.samuelokello.datasource.local.source.preference
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
