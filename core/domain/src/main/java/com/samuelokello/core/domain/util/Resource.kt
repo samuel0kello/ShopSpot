@@ -1,4 +1,4 @@
-package com.example.core.domain.util
+package com.samuelokello.core.domain.util
 
 typealias EmptyResult = Result<Unit, Error>
 
@@ -7,7 +7,7 @@ sealed interface Result<out D, out E : Error> {
         val data: D,
     ) : Result<D, Nothing>
 
-    data class Error<out E : com.example.core.domain.util.Error>(
+    data class Error<out E : com.samuelokello.core.domain.util.Error>(
         val error: E,
     ) : Result<Nothing, E>
 }
