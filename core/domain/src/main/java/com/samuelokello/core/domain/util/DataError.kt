@@ -1,4 +1,4 @@
-package com.example.core.domain.util
+package com.samuelokello.core.domain.util
 
 sealed interface DataError : Error {
     enum class Network : DataError {
