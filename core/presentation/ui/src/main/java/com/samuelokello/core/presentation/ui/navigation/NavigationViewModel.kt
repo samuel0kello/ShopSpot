@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.navigation
+package com.samuelokello.core.presentation.ui.navigation
 
 import android.content.Context
 import android.widget.Toast
