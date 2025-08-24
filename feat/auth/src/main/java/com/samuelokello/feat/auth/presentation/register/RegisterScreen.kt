@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.auth.register
+package com.samuelokello.feat.auth.presentation.register
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.PaddingValues

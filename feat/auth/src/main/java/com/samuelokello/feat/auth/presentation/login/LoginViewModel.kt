@@ -1,19 +1,20 @@
-package com.samuelokello.shopspot.ui.auth.login
+package com.samuelokello.feat.auth.presentation.login
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samuelokello.shopspot.data.network.auth.request.LoginRequest
-import com.samuelokello.shopspot.domain.repository.LoginRepository
+import com.samuelokello.core.domain.model.LoginResponse
+import com.samuelokello.core.domain.model.UserCredentials
+import com.samuelokello.core.domain.repository.AuthenticationRepository
+import com.samuelokello.core.domain.util.DataError
+import com.samuelokello.core.domain.util.Result
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
 
 class LoginViewModel(
-    private val repository: LoginRepository,
+    private val repository: AuthenticationRepository,
 ) : ViewModel() {
     private val _uiState = mutableStateOf(LoginUiState())
     val uiState: State<LoginUiState> = _uiState
@@ -48,29 +49,40 @@ class LoginViewModel(
         if (!validateInputs()) return
 
         viewModelScope.launch {
-            try {
-                _uiState.value = _uiState.value.copy(isLoading = true)
+            _uiState.value = _uiState.value.copy(isLoading = true)
 
-                repository.login(
-                    LoginRequest(
+            repository
+                .login(
+                    UserCredentials(
                         username = _uiState.value.username,
                         password = _uiState.value.password,
                     ),
-                    _uiState.value.rememberMe,
-                )
-
-                _navigationEvent.emit("home")
-            } catch (e: Exception) {
-                val errorMessage =
-                    when (e) {
-                        is IOException -> "Network error. Check your connection."
-                        is HttpException -> "Invalid credentials"
-                        else -> e.localizedMessage ?: "Unknown error occurred"
+                ).collect { result ->
+                    when (result) {
+                        is Result.Error<DataError.Network> -> {
+                        }
+                        is Result.Success<LoginResponse> -> {
+                            _uiState.value =
+                                _uiState.value.copy(
+                                    isLoading = false,
+                                    error = null,
+                                )
+                            _navigationEvent.emit("home")
+                        }
                     }
-                _uiState.value = _uiState.value.copy(error = errorMessage)
-            } finally {
-                _uiState.value = _uiState.value.copy(isLoading = false)
-            }
+                }
+
+//            catch (e: Exception) {
+//                val errorMessage =
+//                    when (e) {
+//                        is IOException -> "Network error. Check your connection."
+//                        is HttpException -> "Invalid credentials"
+//                        else -> e.localizedMessage ?: "Unknown error occurred"
+//                    }
+//                _uiState.value = _uiState.value.copy(error = errorMessage)
+//            } finally {
+//                _uiState.value = _uiState.value.copy(isLoading = false)
+//            }
         }
     }
 

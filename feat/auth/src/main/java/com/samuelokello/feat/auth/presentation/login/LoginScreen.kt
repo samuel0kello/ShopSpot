@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.auth.login
+package com.samuelokello.feat.auth.presentation.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,15 +32,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.samuelokello.shopspot.ui.AppViewModelProvider
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LoginScreen(
     navigateToRegister: () -> Unit,
     navigateToHome: () -> Unit,
     navigateToForgotPassword: () -> Unit,
-    viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: LoginViewModel = koinViewModel(),
 ) {
     val uiState by viewModel.uiState
     val keyboardController = LocalSoftwareKeyboardController.current
