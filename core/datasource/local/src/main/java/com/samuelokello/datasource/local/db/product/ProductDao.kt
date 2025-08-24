@@ -1,10 +1,11 @@
-package com.example.datasource.local.db.dao.product
+package com.samuelokello.datasource.local.db.product
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.datasource.local.entity.product.ProductEntity
+import com.samuelokello.datasource.local.entity.product.ProductEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductDao {
@@ -15,7 +16,7 @@ interface ProductDao {
     suspend fun insertProducts(products: List<ProductEntity>)
 
     @Query("SELECT * FROM products")
-    suspend fun getAllProducts(): List<ProductEntity>
+    suspend fun getAllProducts(): Flow<List<ProductEntity>>
 
     @Query("SELECT * FROM products WHERE id = :productId")
     suspend fun getProductById(productId: Int): ProductEntity

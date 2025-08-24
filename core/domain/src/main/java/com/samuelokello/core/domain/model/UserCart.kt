@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.domain
+package com.samuelokello.core.domain.model
 
 // UserCart.kt (Domain Model)
 data class UserCart(

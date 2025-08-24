@@ -1,7 +1,7 @@
-package com.example.datasource.local.db.dao.product
+package com.samuelokello.datasource.local.db.product
 
 import androidx.room.*
-import com.example.datasource.local.entity.ReviewEntity
+import com.samuelokello.datasource.local.entity.ReviewEntity
 
 @Dao
 interface ReviewDao {
