@@ -1,9 +1,9 @@
-package com.samuelokello.shopspot.ui.home
+package com.samuelokello.feat.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.samuelokello.shopspot.data.repository.ProductRepository
-import com.samuelokello.shopspot.domain.Product
+import com.samuelokello.core.domain.model.Product
+import com.samuelokello.core.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -11,9 +11,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-/**
- * ViewModel
- */
 class HomeViewModel(
     private val repository: ProductRepository,
 ) : ViewModel() {

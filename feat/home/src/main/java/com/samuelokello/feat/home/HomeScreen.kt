@@ -1,4 +1,4 @@
-package com.samuelokello.shopspot.ui.home
+package com.samuelokello.feat.home
 
 import android.annotation.SuppressLint
 import android.widget.Toast
@@ -16,7 +16,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -27,24 +27,23 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.samuelokello.shopspot.R
-import com.samuelokello.shopspot.domain.Product
-import com.samuelokello.shopspot.ui.AppViewModelProvider
-import com.samuelokello.shopspot.ui.components.ErrorView
+import com.samuelokello.core.domain.model.Product
+import com.samuelokello.core.presentation.designsystem.R
+import com.samuelokello.core.presentation.designsystem.components.ErrorView
+import org.koin.androidx.compose.koinViewModel
 
 /**
  * @Product Screen - Lists all available products
  */
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = viewModel(factory = AppViewModelProvider.Factory),
+    viewModel: HomeViewModel = koinViewModel(),
     navigateToItemDetails: (productId: Int) -> Unit,
     onBackPressed: () -> Unit,
 ) {
     val state by viewModel.homeUiState.collectAsState()
 
-    var backPressedTime by remember { mutableStateOf(0L) }
+    var backPressedTime by remember { mutableLongStateOf(0L) }
     val context = LocalContext.current
 
     BackHandler {
@@ -103,7 +102,7 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Image(
             modifier = modifier.size(200.dp),
-            painter = painterResource(R.drawable.loading_img),
+            painter = painterResource(R.drawable.core_presentation_designsystem_loading_image),
             contentDescription = stringResource(R.string.loading),
             contentScale = ContentScale.Crop,
         )
